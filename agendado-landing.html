@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agendado · La agenda online para profesionales</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:#060608;
+  --dark:#0d0d10;
+  --dark2:#131318;
+  --dark3:#1a1a22;
+  --dark4:#22222c;
+  --border:#2a2a35;
+  --border2:#38384a;
+  --gold:#c9a96e;
+  --gold-lt:#e2c898;
+  --gold-dim:#8a6e3e;
+  --gold-pale:rgba(201,169,110,.07);
+  --gold-glow:rgba(201,169,110,.15);
+  --teal:#0d9488;
+  --teal-pale:rgba(13,148,136,.08);
+  --emerald:#22c55e;
+  --violet:#8b5cf6;
+  --text:#edeae2;
+  --text-mid:#8a8490;
+  --text-dim:#4a4858;
+  --white:#ffffff;
+  --gradient:linear-gradient(135deg,#c9a96e 0%,#e2c898 50%,#c9a96e 100%);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--black);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* ── NOISE ── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:999;opacity:.6;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:20px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(6,6,8,.85);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.04);
+  transition:all .3s;
+}
+
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:500;
+  background:var(--gradient);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  letter-spacing:-.5px;
+}
+
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-link{font-size:13px;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color .2s;}
+.nav-link:hover{color:var(--gold);}
+
+.nav-cta{
+  padding:10px 22px;
+  background:var(--gold);
+  color:var(--black);
+  border:none;border-radius:8px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:13px;font-weight:700;
+  cursor:pointer;transition:all .2s;
+  text-decoration:none;letter-spacing:.3px;
+}
+.nav-cta:hover{background:var(--gold-lt);transform:translateY(-1px);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:120px 24px 80px;
+  position:relative;overflow:hidden;
+  text-align:center;
+}
+
+/* Orbs */
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+.orb-1{width:500px;height:500px;top:-100px;left:-100px;background:radial-gradient(circle,rgba(201,169,110,.08),transparent 70%);}
+.orb-2{width:400px;height:400px;bottom:-80px;right:-80px;background:radial-gradient(circle,rgba(13,148,136,.07),transparent 70%);}
+.orb-3{width:300px;height:300px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(139,92,246,.05),transparent 70%);}
+
+/* Grid lines decorativas */
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(201,169,110,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,169,110,.04) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);
+}
+
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold-pale);
+  border:1px solid rgba(201,169,110,.2);
+  border-radius:20px;padding:6px 16px;
+  font-size:11px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:28px;
+  opacity:0;animation:fadeUp .7s .1s ease forwards;
+}
+
+.hero-eyebrow-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--gold);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(42px,8vw,80px);
+  font-weight:500;line-height:1.05;
+  color:var(--white);
+  margin-bottom:24px;
+  max-width:800px;
+  opacity:0;animation:fadeUp .7s .25s ease forwards;
+}
+
+.hero-title span{
+  background:var(--gradient);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  background-size:200% auto;
+  animation:shine 4s linear infinite;
+}
+
+@keyframes shine{
+  0%{background-position:0% center;}
+  100%{background-position:200% center;}
+}
+
+.hero-sub{
+  font-size:clamp(15px,2vw,18px);
+  color:var(--text-mid);
+  line-height:1.7;max-width:520px;
+  margin:0 auto 40px;
+  opacity:0;animation:fadeUp .7s .4s ease forwards;
+}
+
+.hero-actions{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;
+  margin-bottom:60px;
+  opacity:0;animation:fadeUp .7s .55s ease forwards;
+}
+
+.btn-primary{
+  padding:16px 32px;
+  background:var(--gold);color:var(--black);
+  border:none;border-radius:10px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:15px;font-weight:700;
+  cursor:pointer;transition:all .25s;
+  letter-spacing:.3px;text-decoration:none;
+  display:inline-block;
+}
+.btn-primary:hover{background:var(--gold-lt);transform:translateY(-2px);box-shadow:0 10px 30px rgba(201,169,110,.3);}
+
+.btn-ghost{
+  padding:15px 28px;
+  background:transparent;
+  border:1px solid var(--border2);
+  border-radius:10px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:15px;font-weight:600;
+  color:var(--text-mid);cursor:pointer;
+  transition:all .25s;text-decoration:none;
+  display:inline-block;
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+
+/* Hero stats */
+.hero-stats{
+  display:flex;align-items:center;gap:0;
+  border:1px solid var(--border);border-radius:14px;
+  overflow:hidden;background:var(--dark2);
+  opacity:0;animation:fadeUp .7s .7s ease forwards;
+}
+
+.hstat{
+  padding:20px 28px;text-align:center;
+  border-right:1px solid var(--border);
+}
+.hstat:last-child{border-right:none;}
+.hstat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;color:var(--gold);font-weight:500;line-height:1;
+  margin-bottom:4px;
+}
+.hstat-label{font-size:11px;color:var(--text-dim);letter-spacing:.5px;}
+
+/* Mockup flotante */
+.hero-mockup{
+  position:relative;margin-top:80px;
+  opacity:0;animation:fadeUp .8s .9s ease forwards;
+  max-width:380px;width:100%;
+}
+
+.mockup-phone{
+  background:var(--dark2);
+  border:1px solid var(--border2);
+  border-radius:32px;
+  padding:20px 16px;
+  box-shadow:0 40px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.05);
+  position:relative;overflow:hidden;
+}
+
+.mockup-phone::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,169,110,.3),transparent);
+}
+
+.mockup-notch{
+  width:80px;height:6px;background:var(--dark4);
+  border-radius:3px;margin:0 auto 20px;
+}
+
+.mockup-hero-bar{
+  background:var(--dark3);border-radius:16px;padding:16px;
+  margin-bottom:12px;text-align:center;
+  border:1px solid var(--border);
+}
+
+.mockup-avatar{
+  width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-pale),var(--teal-pale));
+  border:2px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;margin:0 auto 10px;
+}
+
+.mockup-name{font-size:14px;font-weight:700;color:var(--white);margin-bottom:2px;}
+.mockup-spec{font-size:10px;color:var(--text-dim);}
+
+.mockup-cal{
+  background:var(--dark3);border-radius:12px;padding:12px;
+  margin-bottom:10px;border:1px solid var(--border);
+}
+
+.mockup-cal-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:10px;font-size:11px;color:var(--text-mid);
+}
+
+.mockup-days{
+  display:grid;grid-template-columns:repeat(7,1fr);gap:3px;
+}
+
+.mockup-day{
+  aspect-ratio:1;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:var(--text-dim);
+}
+
+.mockup-day.avail{background:rgba(13,148,136,.15);color:var(--teal);font-weight:700;}
+.mockup-day.sel{background:var(--teal);color:white;font-weight:700;}
+.mockup-day.today{border:1px solid var(--gold);color:var(--gold);}
+
+.mockup-btn{
+  width:100%;padding:12px;
+  background:linear-gradient(135deg,var(--gold),#b8905a);
+  border:none;border-radius:10px;
+  font-size:12px;font-weight:700;color:var(--black);
+  cursor:pointer;letter-spacing:.5px;
+}
+
+/* Floating badge */
+.float-badge{
+  position:absolute;right:-20px;top:30%;
+  background:var(--dark2);border:1px solid var(--border2);
+  border-radius:12px;padding:10px 14px;
+  box-shadow:0 8px 24px rgba(0,0,0,.4);
+  animation:float 3s ease-in-out infinite;
+  min-width:150px;
+}
+
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+.float-badge-inner{display:flex;align-items:center;gap:8px;}
+.float-badge-icon{font-size:20px;}
+.float-badge-text{font-size:11px;color:var(--text-mid);}
+.float-badge-text strong{display:block;color:var(--emerald);font-size:13px;}
+
+.float-badge-2{
+  position:absolute;left:-24px;bottom:25%;
+  background:var(--dark2);border:1px solid var(--border2);
+  border-radius:12px;padding:10px 14px;
+  box-shadow:0 8px 24px rgba(0,0,0,.4);
+  animation:float 3.5s ease-in-out infinite .5s;
+  min-width:140px;
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── SECTIONS COMMON ── */
+section{padding:100px 24px;position:relative;z-index:1;}
+.container{max-width:1100px;margin:0 auto;}
+.container-sm{max-width:680px;margin:0 auto;}
+
+.section-eyebrow{
+  font-size:10px;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold);
+  text-align:center;margin-bottom:12px;
+}
+
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,5vw,52px);font-weight:500;
+  color:var(--white);text-align:center;line-height:1.15;
+  margin-bottom:14px;
+}
+
+.section-sub{
+  font-size:16px;color:var(--text-mid);
+  text-align:center;line-height:1.7;
+  max-width:520px;margin:0 auto 60px;
+}
+
+/* ── PROBLEMA ── */
+.problema{background:var(--dark);}
+
+.problema-grid{
+  display:grid;grid-template-columns:1fr;gap:16px;
+  max-width:700px;margin:0 auto;
+}
+
+.problema-item{
+  display:flex;align-items:flex-start;gap:16px;
+  padding:22px 24px;
+  background:var(--dark2);border:1px solid var(--border);
+  border-radius:14px;
+  transition:border-color .2s;
+}
+.problema-item:hover{border-color:var(--border2);}
+
+.problema-icon{
+  width:44px;height:44px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+  background:var(--dark3);border:1px solid var(--border);
+}
+
+.problema-text h3{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.problema-text p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+
+/* ── COMO FUNCIONA ── */
+.como{background:var(--black);}
+
+.pasos-grid{
+  display:grid;grid-template-columns:1fr;gap:0;
+  max-width:600px;margin:0 auto;
+  position:relative;
+}
+
+.pasos-grid::before{
+  content:'';position:absolute;
+  left:27px;top:40px;bottom:40px;width:1px;
+  background:linear-gradient(to bottom,transparent,var(--border),var(--border),transparent);
+}
+
+.paso{
+  display:flex;gap:20px;padding:24px 0;
+  position:relative;
+}
+
+.paso-num{
+  width:54px;height:54px;border-radius:50%;flex-shrink:0;
+  background:var(--dark2);border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;color:var(--gold);font-weight:600;
+  position:relative;z-index:1;
+}
+
+.paso-content{padding-top:12px;}
+.paso-content h3{font-size:16px;font-weight:700;color:var(--white);margin-bottom:5px;}
+.paso-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+
+/* ── PARA QUIEN ── */
+.para-quien{background:var(--dark);}
+
+.profesionales-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.prof-card{
+  padding:22px 20px;
+  background:var(--dark2);border:1px solid var(--border);
+  border-radius:14px;transition:all .2s;
+  position:relative;overflow:hidden;
+}
+
+.prof-card::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold-dim),transparent);
+  opacity:0;transition:opacity .2s;
+}
+
+.prof-card:hover{border-color:var(--gold-dim);}
+.prof-card:hover::before{opacity:1;}
+
+.prof-icon{font-size:28px;margin-bottom:10px;}
+.prof-name{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.prof-desc{font-size:12px;color:var(--text-mid);}
+
+/* ── PLANES ── */
+.planes{background:var(--black);}
+
+.planes-grid{
+  display:grid;grid-template-columns:1fr;gap:16px;
+  max-width:420px;margin:0 auto;
+}
+
+.plan-card{
+  background:var(--dark2);border:1px solid var(--border);
+  border-radius:20px;padding:28px 24px;
+  position:relative;overflow:hidden;
+  transition:transform .2s,border-color .2s;
+}
+.plan-card:hover{transform:translateY(-3px);}
+
+.plan-card.featured{
+  border-color:var(--gold);
+  background:linear-gradient(135deg,var(--dark2),#1a160a);
+}
+
+.plan-card.featured::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+
+.plan-badge{
+  display:inline-block;
+  font-size:9px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;padding:3px 10px;
+  border-radius:20px;margin-bottom:14px;
+}
+
+.badge-free{background:var(--teal-pale);color:var(--teal);border:1px solid rgba(13,148,136,.2);}
+.badge-pro{background:var(--gold-pale);color:var(--gold);border:1px solid rgba(201,169,110,.2);}
+.badge-clinic{background:rgba(139,92,246,.08);color:var(--violet);border:1px solid rgba(139,92,246,.2);}
+.badge-popular{background:var(--gold);color:var(--black);}
+
+.plan-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;color:var(--white);margin-bottom:6px;
+}
+
+.plan-price{margin-bottom:4px;}
+.plan-price-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:44px;color:var(--white);font-weight:500;line-height:1;
+}
+.plan-price-num sup{font-size:20px;color:var(--text-mid);font-weight:400;}
+.plan-price-period{font-size:12px;color:var(--text-dim);margin-bottom:4px;}
+.plan-price-ars{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);}
+
+.plan-divider{height:1px;background:var(--border);margin:18px 0;}
+
+.plan-features{list-style:none;}
+.plan-features li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:13px;color:var(--text-mid);
+  padding:7px 0;border-bottom:1px solid var(--border);
+  line-height:1.4;
+}
+.plan-features li:last-child{border-bottom:none;}
+.feat-check{color:var(--gold);flex-shrink:0;font-size:13px;margin-top:1px;}
+.feat-check.no{color:var(--text-dim);}
+.feat-included{color:var(--text);}
+
+.plan-target{
+  font-size:11px;color:var(--text-dim);
+  font-style:italic;margin:14px 0 18px;
+  padding:10px 12px;
+  background:var(--dark3);border-radius:8px;
+}
+
+.btn-plan{
+  width:100%;padding:13px;border:none;border-radius:10px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;
+  letter-spacing:.3px;
+}
+.btn-plan-free{background:var(--teal-pale);color:var(--teal);border:1px solid rgba(13,148,136,.2);}
+.btn-plan-free:hover{background:rgba(13,148,136,.15);}
+.btn-plan-gold{background:var(--gold);color:var(--black);}
+.btn-plan-gold:hover{background:var(--gold-lt);transform:translateY(-1px);}
+.btn-plan-violet{background:rgba(139,92,246,.1);color:var(--violet);border:1px solid rgba(139,92,246,.2);}
+.btn-plan-violet:hover{background:rgba(139,92,246,.15);}
+
+/* ── DIFERENCIADORES ── */
+.diff{background:var(--dark);}
+
+.diff-grid{
+  display:grid;grid-template-columns:1fr;gap:12px;
+}
+
+.diff-item{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:20px;background:var(--dark2);
+  border:1px solid var(--border);border-radius:14px;
+}
+
+.diff-icon{
+  width:42px;height:42px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+  background:var(--gold-pale);border:1px solid rgba(201,169,110,.15);
+}
+
+.diff-text h3{font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px;}
+.diff-text p{font-size:12px;color:var(--text-mid);line-height:1.6;}
+
+/* ── TESTIMONIOS ── */
+.testimonios{background:var(--black);}
+
+.testi-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+
+.testi-card{
+  background:var(--dark2);border:1px solid var(--border);
+  border-radius:16px;padding:22px;
+  position:relative;overflow:hidden;
+}
+
+.testi-card::before{
+  content:'"';
+  position:absolute;top:-10px;left:16px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:80px;color:var(--gold);opacity:.08;
+  line-height:1;
+}
+
+.testi-stars{color:var(--gold);font-size:13px;letter-spacing:2px;margin-bottom:10px;}
+.testi-text{font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:14px;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:10px;}
+.testi-avatar{width:36px;height:36px;border-radius:50%;background:var(--dark3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.testi-name{font-size:13px;font-weight:700;color:var(--white);}
+.testi-role{font-size:11px;color:var(--text-dim);}
+
+/* ── CTA FINAL ── */
+.cta-final{
+  background:var(--dark);
+  padding:100px 24px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+
+.cta-final::before{
+  content:'';position:absolute;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,169,110,.06),transparent 70%);
+  pointer-events:none;
+}
+
+.cta-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,6vw,64px);
+  color:var(--white);font-weight:500;
+  line-height:1.1;margin-bottom:18px;
+}
+
+.cta-title span{
+  background:var(--gradient);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.cta-sub{font-size:16px;color:var(--text-mid);margin-bottom:40px;line-height:1.6;}
+
+.cta-note{font-size:12px;color:var(--text-dim);margin-top:16px;}
+.cta-note strong{color:var(--gold);}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--dark2);border-top:1px solid var(--border);
+  padding:40px 24px;
+}
+
+.footer-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;
+}
+
+.footer-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;
+  background:var(--gradient);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+.footer-link{font-size:12px;color:var(--text-dim);text-decoration:none;transition:color .2s;}
+.footer-link:hover{color:var(--gold);}
+
+.footer-copy{font-size:12px;color:var(--text-dim);}
+
+/* ── MOBILE NAV HAMBURGER ── */
+.nav-mobile-toggle{display:none;background:none;border:none;color:var(--text-mid);font-size:20px;cursor:pointer;}
+
+/* ── SCROLL ANIMATION ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .nav-mobile-toggle{display:block;}
+  .hero-stats{flex-direction:column;width:100%;max-width:320px;}
+  .hstat{border-right:none;border-bottom:1px solid var(--border);}
+  .hstat:last-child{border-bottom:none;}
+  .float-badge,.float-badge-2{display:none;}
+  .profesionales-grid{grid-template-columns:1fr 1fr;}
+  .footer-inner{flex-direction:column;text-align:center;}
+}
+
+/* ── PLAN TOGGLE ── */
+.planes-toggle{
+  display:flex;align-items:center;justify-content:center;
+  gap:0;margin-bottom:40px;
+  background:var(--dark2);border:1px solid var(--border);
+  border-radius:10px;padding:4px;
+  max-width:240px;margin-left:auto;margin-right:auto;
+  margin-bottom:40px;
+}
+
+.toggle-btn{
+  flex:1;padding:9px 16px;border:none;border-radius:8px;
+  background:transparent;font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:12px;font-weight:600;color:var(--text-dim);
+  cursor:pointer;transition:all .2s;
+}
+
+.toggle-btn.active{background:var(--gold);color:var(--black);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">Agendado.</div>
+  <div class="nav-links">
+    <a class="nav-link" href="#como">Cómo funciona</a>
+    <a class="nav-link" href="#planes">Planes</a>
+    <a class="nav-link" href="#para-quien">Para quién</a>
+    <a class="nav-link" href="#contacto">Contacto</a>
+  </div>
+  <a class="nav-cta" href="#planes">Empezar gratis</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <div class="hero-eyebrow">
+    <span class="hero-eyebrow-dot"></span>
+    Agenda online para profesionales
+  </div>
+
+  <h1 class="hero-title">
+    Tu agenda.<br>
+    Un <span>link</span>.<br>
+    Sin complicaciones.
+  </h1>
+
+  <p class="hero-sub">
+    Compartís un link y tus pacientes o clientes eligen turno en segundos. Sin llamadas, sin WhatsApp de ida y vuelta. Listo en 48 horas.
+  </p>
+
+  <div class="hero-actions">
+    <a class="btn-primary" href="#planes">Empezar gratis →</a>
+    <a class="btn-ghost" href="#como">Ver cómo funciona</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hstat">
+      <div class="hstat-num">48hs</div>
+      <div class="hstat-label">Tiempo de entrega</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-num">$0</div>
+      <div class="hstat-label">Para empezar</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-num">∞</div>
+      <div class="hstat-label">Especialidades</div>
+    </div>
+  </div>
+
+  <!-- Mockup -->
+  <div class="hero-mockup">
+    <div class="mockup-phone">
+      <div class="mockup-notch"></div>
+      <div class="mockup-hero-bar">
+        <div class="mockup-avatar">🦷</div>
+        <div class="mockup-name">Dr. González Gómez</div>
+        <div class="mockup-spec">Cirugía Dentomaxilar · Clínica CEMIJ</div>
+      </div>
+      <div class="mockup-cal">
+        <div class="mockup-cal-header">
+          <span>‹</span>
+          <span style="color:var(--text);font-weight:600;font-size:12px">Abril 2026</span>
+          <span>›</span>
+        </div>
+        <div class="mockup-days">
+          <div class="mockup-day">L</div><div class="mockup-day">M</div><div class="mockup-day">M</div>
+          <div class="mockup-day">J</div><div class="mockup-day">V</div><div class="mockup-day" style="color:var(--text-dim)">S</div>
+          <div class="mockup-day" style="color:var(--text-dim)">D</div>
+          <div class="mockup-day avail">7</div><div class="mockup-day avail">8</div>
+          <div class="mockup-day today">9</div><div class="mockup-day avail">10</div>
+          <div class="mockup-day avail">11</div><div class="mockup-day">12</div><div class="mockup-day">13</div>
+          <div class="mockup-day avail">14</div><div class="mockup-day sel">15</div>
+          <div class="mockup-day avail">16</div><div class="mockup-day avail">17</div>
+          <div class="mockup-day avail">18</div><div class="mockup-day">19</div><div class="mockup-day">20</div>
+          <div class="mockup-day avail">21</div><div class="mockup-day avail">22</div>
+          <div class="mockup-day avail">23</div><div class="mockup-day avail">24</div>
+          <div class="mockup-day avail">25</div>
+        </div>
+      </div>
+      <button class="mockup-btn">Confirmar turno →</button>
+    </div>
+
+    <div class="float-badge">
+      <div class="float-badge-inner">
+        <span class="float-badge-icon">✅</span>
+        <div class="float-badge-text">
+          <strong>Turno confirmado</strong>
+          Hace 2 minutos
+        </div>
+      </div>
+    </div>
+
+    <div class="float-badge-2">
+      <div class="float-badge-inner">
+        <span class="float-badge-icon">🔔</span>
+        <div class="float-badge-text">
+          <strong>Recordatorio</strong>
+          24hs antes
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EL PROBLEMA -->
+<section class="problema" id="problema">
+  <div class="container-sm">
+    <p class="section-eyebrow reveal">El problema</p>
+    <h2 class="section-title reveal">¿Cómo coordinás tus turnos hoy?</h2>
+    <p class="section-sub reveal">Si usás WhatsApp, llamadas o una agenda en papel, estás perdiendo tiempo y pacientes todos los días.</p>
+
+    <div class="problema-grid">
+      <div class="problema-item reveal">
+        <div class="problema-icon">📱</div>
+        <div class="problema-text">
+          <h3>WhatsApp interminable</h3>
+          <p>Mensajes que van y vienen, horarios que se confunden, pacientes que no confirman. Cada turno te lleva 10 minutos de conversación.</p>
+        </div>
+      </div>
+      <div class="problema-item reveal">
+        <div class="problema-icon">🗓️</div>
+        <div class="problema-text">
+          <h3>Turnos perdidos sin aviso</h3>
+          <p>Sin recordatorio automático, el 20-30% de los pacientes se olvida o llega tarde. Tiempo y dinero que no volvés a recuperar.</p>
+        </div>
+      </div>
+      <div class="problema-item reveal">
+        <div class="problema-icon">😰</div>
+        <div class="problema-text">
+          <h3>Cero imagen profesional</h3>
+          <p>Tus colegas ya tienen agenda online. Seguir con llamadas y WhatsApp te hace parecer desorganizado frente a nuevos pacientes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="como" id="como">
+  <div class="container-sm">
+    <p class="section-eyebrow reveal">Cómo funciona</p>
+    <h2 class="section-title reveal">Simple para vos.<br>Simple para ellos.</h2>
+    <p class="section-sub reveal">Sin instalaciones, sin configuraciones complejas. En 48 horas tu agenda está online.</p>
+
+    <div class="pasos-grid">
+      <div class="paso reveal">
+        <div class="paso-num">1</div>
+        <div class="paso-content">
+          <h3>Nos mandás tus datos</h3>
+          <p>Nombre, especialidad, horarios y foto. Lo hacemos nosotros, vos no tocás nada técnico.</p>
+        </div>
+      </div>
+      <div class="paso reveal">
+        <div class="paso-num">2</div>
+        <div class="paso-content">
+          <h3>Recibís tu link en 48hs</h3>
+          <p>Tu página personalizada lista para compartir. Única, con tu marca y tus colores.</p>
+        </div>
+      </div>
+      <div class="paso reveal">
+        <div class="paso-num">3</div>
+        <div class="paso-content">
+          <h3>Lo compartís donde quieras</h3>
+          <p>Instagram, WhatsApp, tarjeta personal, email. Un solo link para todo.</p>
+        </div>
+      </div>
+      <div class="paso reveal">
+        <div class="paso-num">4</div>
+        <div class="paso-content">
+          <h3>Los turnos llegan solos</h3>
+          <p>El paciente elige día y horario. Vos y el paciente reciben confirmación automática. Y recordatorio 24hs antes.</p>
+        </div>
+      </div>
+      <div class="paso reveal">
+        <div class="paso-num">5</div>
+        <div class="paso-content">
+          <h3>Gestionás todo desde tu panel</h3>
+          <p>Confirmá, cancelá, escribí por WhatsApp a cada paciente. Todo en un solo lugar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUIÉN -->
+<section class="para-quien" id="para-quien">
+  <div class="container">
+    <p class="section-eyebrow reveal">Para quién</p>
+    <h2 class="section-title reveal">Cualquier profesional<br>que trabaje con turnos</h2>
+    <p class="section-sub reveal">Médicos, terapeutas, estetas, coaches — si tenés una agenda, Agendado es para vos.</p>
+
+    <div class="profesionales-grid">
+      <div class="prof-card reveal"><div class="prof-icon">🦷</div><div class="prof-name">Odontólogos</div><div class="prof-desc">Turnos de 30 y 45 min, múltiples especialidades</div></div>
+      <div class="prof-card reveal"><div class="prof-icon">🧠</div><div class="prof-name">Psicólogos</div><div class="prof-desc">Sesiones de 50 min, recurrencia semanal</div></div>
+      <div class="prof-card reveal"><div class="prof-icon">🥗</div><div class="prof-name">Nutricionistas</div><div class="prof-desc">Consultas y controles programados</div></div>
+      <div class="prof-card reveal"><div class="prof-icon">💪</div><div class="prof-name">Kinesiólogos</div><div class="prof-desc">Sesiones de rehabilitación y seguimiento</div></div>
+      <div class="prof-card reveal"><div class="prof-icon">👨‍⚕️</div><div class="prof-name">Médicos clínicos</div><div class="prof-desc">Consultas generales y seguimientos</div></div>
+      <div class="prof-card reveal"><div class="prof-icon">✨</div><div class="prof-name">Estética y belleza</div><div class="prof-desc">Turnos para tratamientos y servicios</div></div>
+      <div class="prof-card reveal"><div class="prof-icon">⚖️</div><div class="prof-name">Abogados</div><div class="prof-desc">Consultas y reuniones de seguimiento</div></div>
+      <div class="prof-card reveal"><div class="prof-icon">📊</div><div class="prof-name">Contadores</div><div class="prof-desc">Asesorías y reuniones de cierre</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section class="planes" id="planes">
+  <div class="container">
+    <p class="section-eyebrow reveal">Planes</p>
+    <h2 class="section-title reveal">Empezá gratis.<br>Escalá cuando quieras.</h2>
+    <p class="section-sub reveal">Sin contratos, sin permanencia. Cancelás cuando quieras.</p>
+
+    <!-- Nota precio promocional -->
+    <p style="text-align:center;font-size:12px;color:var(--text-dim);margin-bottom:28px;" class="reveal">
+      * Precios de lanzamiento. Podés fijar tu precio actual contratando hoy.
+    </p>
+
+    <div class="planes-grid reveal">
+
+      <!-- FREE -->
+      <div class="plan-card">
+        <span class="plan-badge badge-free">Gratis para siempre</span>
+        <div class="plan-name">Free</div>
+        <div class="plan-price">
+          <div class="plan-price-num"><sup>USD </sup>0</div>
+        </div>
+        <div class="plan-price-period">para siempre · sin tarjeta</div>
+        <div class="plan-target">💡 Probá Agendado sin riesgo. Hasta 15 turnos/mes incluidos.</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="feat-check">✓</span><span class="feat-included">Página personalizada</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Calendario de turnos</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Confirmación por email</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Hasta 15 turnos / mes</span></li>
+          <li><span class="feat-check no">–</span><span>Panel del profesional</span></li>
+          <li><span class="feat-check no">–</span><span>Recordatorio automático</span></li>
+          <li><span class="feat-check no">–</span><span>WhatsApp automático</span></li>
+        </ul>
+        <button class="btn-plan btn-plan-free">Empezar gratis →</button>
+      </div>
+
+      <!-- PRO -->
+      <div class="plan-card featured">
+        <span class="plan-badge badge-popular">⭐ Más elegido</span>
+        <div class="plan-name">Profesional</div>
+        <div class="plan-price">
+          <div class="plan-price-num"><sup>USD </sup>15<span style="font-size:14px;color:var(--gold-dim);font-family:'Plus Jakarta Sans',sans-serif;font-weight:400"> *</span></div>
+        </div>
+        <div class="plan-price-period">por mes · 1 profesional</div>
+        <div class="plan-price-ars">≈ ARS 18.000 / mes · precio promocional de lanzamiento</div>
+        <div class="plan-target">💡 Para el profesional independiente que quiere gestión real y turnos ilimitados.</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="feat-check">✓</span><span class="feat-included">Todo lo del plan Free</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Turnos ilimitados</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Panel del profesional</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Recordatorio 24hs automático</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Historial de pacientes</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Bloqueo de días</span></li>
+          <li><span class="feat-check no">–</span><span>WhatsApp automático</span></li>
+        </ul>
+        <button class="btn-plan btn-plan-gold">Contratar Profesional →</button>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="plan-card">
+        <span class="plan-badge badge-pro">Premium</span>
+        <div class="plan-name">Premium</div>
+        <div class="plan-price">
+          <div class="plan-price-num"><sup>USD </sup>35<span style="font-size:14px;color:var(--gold-dim);font-family:'Plus Jakarta Sans',sans-serif;font-weight:400"> *</span></div>
+        </div>
+        <div class="plan-price-period">por mes · 1 profesional</div>
+        <div class="plan-price-ars">≈ ARS 42.000 / mes · precio promocional de lanzamiento</div>
+        <div class="plan-target">💡 Automatización completa: WhatsApp, dominio propio y reportes incluidos.</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="feat-check">✓</span><span class="feat-included">Todo lo del plan Profesional</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">WhatsApp automático incluido</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Dominio propio incluido</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Personalización completa de marca</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Reportes mensuales de ocupación</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Soporte prioritario vía WhatsApp</span></li>
+        </ul>
+        <button class="btn-plan btn-plan-gold">Contratar Premium →</button>
+      </div>
+
+      <!-- CLÍNICA -->
+      <div class="plan-card" style="border-color:var(--violet);position:relative;">
+        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--violet);color:white;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:4px 14px;border-radius:20px;white-space:nowrap;">
+          PRECIO PROMOCIONAL DE LANZAMIENTO *
+        </div>
+        <div style="margin-top:8px"></div>
+        <span class="plan-badge badge-clinic">Clínica / Estudio</span>
+        <div class="plan-name">Clínica</div>
+        <div class="plan-price">
+          <div class="plan-price-num"><sup>desde USD </sup>99<span style="font-size:14px;color:var(--text-dim);font-family:'Plus Jakarta Sans',sans-serif;font-weight:400"> *</span></div>
+        </div>
+        <div class="plan-price-period">por mes · hasta 3 profesionales incluidos</div>
+        <div class="plan-price-ars">≈ ARS 119.000 / mes · +USD 15 por profesional adicional</div>
+        <div class="plan-target">💡 Para clínicas y estudios que necesitan múltiples agendas y gestión centralizada.</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="feat-check">✓</span><span class="feat-included">Todo lo del plan Premium</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Múltiples agendas (hasta 3 prof.)</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Panel administrativo central</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Página institucional de la clínica</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Reportes avanzados de ocupación</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Capacitación inicial incluida (1hs)</span></li>
+          <li><span class="feat-check">✓</span><span class="feat-included">Soporte dedicado</span></li>
+        </ul>
+        <button class="btn-plan btn-plan-violet">Consultar disponibilidad →</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ AGENDADO -->
+<section class="diff">
+  <div class="container-sm">
+    <p class="section-eyebrow reveal">Por qué Agendado</p>
+    <h2 class="section-title reveal">Lo que nos hace diferentes</h2>
+    <p class="section-sub reveal">No somos un software genérico. Somos una solución personalizada, local y pensada para vos.</p>
+
+    <div class="diff-grid">
+      <div class="diff-item reveal">
+        <div class="diff-icon">⚡</div>
+        <div class="diff-text">
+          <h3>Listo en 48 horas</h3>
+          <p>No instalás nada, no configurás nada. Nos mandás los datos y nosotros entregamos tu agenda lista para usar.</p>
+        </div>
+      </div>
+      <div class="diff-item reveal">
+        <div class="diff-icon">🎯</div>
+        <div class="diff-text">
+          <h3>Personalizado para vos</h3>
+          <p>Tu nombre, tu foto, tu especialidad, tus horarios. No es un template genérico — es tu agenda.</p>
+        </div>
+      </div>
+      <div class="diff-item reveal">
+        <div class="diff-icon">💬</div>
+        <div class="diff-text">
+          <h3>Soporte real</h3>
+          <p>Hablás con una persona, no con un bot. Respuesta por WhatsApp en menos de 24 horas.</p>
+        </div>
+      </div>
+      <div class="diff-item reveal">
+        <div class="diff-icon">🇦🇷</div>
+        <div class="diff-text">
+          <h3>Pensado para Argentina</h3>
+          <p>Precios en ARS, soporte local, entendemos el contexto del profesional argentino.</p>
+        </div>
+      </div>
+      <div class="diff-item reveal">
+        <div class="diff-icon">🔒</div>
+        <div class="diff-text">
+          <h3>Sin permanencia</h3>
+          <p>Cancelás cuando querés, sin penalidades. Confiamos en que el producto habla por sí solo.</p>
+        </div>
+      </div>
+      <div class="diff-item reveal">
+        <div class="diff-icon">📱</div>
+        <div class="diff-text">
+          <h3>Funciona como app nativa</h3>
+          <p>Tus pacientes lo abren desde el celular y se siente como una app. Sin descargar nada.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios">
+  <div class="container-sm">
+    <p class="section-eyebrow reveal">Testimonios</p>
+    <h2 class="section-title reveal">Lo que dicen los profesionales</h2>
+
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Antes perdía 30 minutos por día coordinando turnos por WhatsApp. Ahora los pacientes reservan solos y yo me entero con una notificación. Cambió completamente mi rutina."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">🦷</div>
+          <div><div class="testi-name">Dr. Bruno González Gómez</div><div class="testi-role">Cirujano Dentomaxilar · Clínica CEMIJ, Tucumán</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Lo que más me sorprendió fue la velocidad. En menos de dos días tenía mi agenda funcionando. Mis pacientes me preguntan qué app uso y cuando les digo que es una página web no lo creen."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">🧠</div>
+          <div><div class="testi-name">Lic. María Fernanda R.</div><div class="testi-role">Psicóloga clínica · Tucumán</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"El recordatorio automático de 24 horas redujo mis ausencias a casi cero. Antes perdía 2 o 3 turnos por semana. Ahora prácticamente no pasa."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">💪</div>
+          <div><div class="testi-name">Lic. Carlos M.</div><div class="testi-role">Kinesiólogo · Buenos Aires</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="contacto">
+  <div class="container-sm">
+    <h2 class="cta-title reveal">
+      Tu agenda online,<br>
+      <span>lista en 48 horas.</span>
+    </h2>
+    <p class="cta-sub reveal">Empezá gratis. Sin tarjeta. Sin instalaciones. Sin complicaciones.</p>
+
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;" class="reveal">
+      <a class="btn-primary" href="https://wa.me/543815000000?text=Hola,%20quiero%20saber%20más%20sobre%20Agendado" target="_blank">
+        💬 Hablar por WhatsApp
+      </a>
+      <a class="btn-ghost" href="https://agendado-bruno.vercel.app" target="_blank">
+        Ver demo en vivo →
+      </a>
+    </div>
+
+    <p class="cta-note reveal">
+      ¿Tenés dudas? Escribinos. <strong>Respondemos en menos de 24hs.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Agendado.</div>
+    <div class="footer-links">
+      <a class="footer-link" href="#como">Cómo funciona</a>
+      <a class="footer-link" href="#planes">Planes</a>
+      <a class="footer-link" href="#para-quien">Para quién</a>
+      <a class="footer-link" href="https://agendado-bruno.vercel.app" target="_blank">Ver demo</a>
+    </div>
+    <div class="footer-copy">© 2026 Agendado · Tucumán, Argentina</div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if (window.scrollY > 50) {
+    nav.style.padding = '14px 24px';
+    nav.style.borderBottomColor = 'rgba(255,255,255,.07)';
+  } else {
+    nav.style.padding = '20px 24px';
+    nav.style.borderBottomColor = 'rgba(255,255,255,.04)';
+  }
+});
+</script>
+</body>
+</html>
