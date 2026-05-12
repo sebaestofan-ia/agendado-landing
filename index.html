@@ -13,31 +13,31 @@
   --mist:#e2e8f4;
   --border:#d8e0ef;
   --border2:#c4cfea;
- 
+
   --blue:#1a4f8a;
   --blue-mid:#2563b0;
   --blue-lt:#4a7fc1;
   --blue-pale:rgba(26,79,138,.06);
   --blue-glow:rgba(26,79,138,.14);
   --blue-deep:#0f3060;
- 
+
   --teal:#0d9488;
   --teal-lt:#14b8a6;
   --teal-pale:rgba(13,148,136,.07);
- 
+
   --gold:#b8882a;
   --gold-pale:rgba(184,136,42,.07);
- 
+
   --rose:#e11d48;
   --rose-pale:rgba(225,29,72,.06);
   --amber:#d97706;
   --amber-pale:rgba(217,119,6,.07);
- 
+
   --text:#0f1f3d;
   --text-mid:#4a5980;
   --text-dim:#8a97b8;
   --text-xdim:#b8c2d8;
- 
+
   --radius:14px;
   --shadow-xs:0 1px 3px rgba(15,31,61,.05);
   --shadow-sm:0 2px 8px rgba(15,31,61,.07),0 1px 3px rgba(15,31,61,.04);
@@ -45,10 +45,10 @@
   --shadow-lg:0 20px 48px rgba(15,31,61,.12),0 4px 12px rgba(15,31,61,.06);
   --shadow-blue:0 8px 28px rgba(26,79,138,.22);
 }
- 
+
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
- 
+
 body{
   font-family:'Plus Jakarta Sans',sans-serif;
   background:var(--white);
@@ -56,7 +56,7 @@ body{
   overflow-x:hidden;
   line-height:1.6;
 }
- 
+
 /* ── LOGO SVG INLINE ── */
 .logo-svg { display:inline-flex; align-items:center; gap:10px; text-decoration:none; }
 .logo-mark { flex-shrink:0; }
@@ -67,7 +67,7 @@ body{
   line-height:1;
 }
 .logo-wordmark em { font-style:italic; color:var(--blue); }
- 
+
 /* ── NAV ── */
 nav {
   position:sticky; top:0; z-index:200;
@@ -80,7 +80,7 @@ nav {
   transition:box-shadow .3s;
 }
 nav.scrolled { box-shadow:var(--shadow-sm); }
- 
+
 .nav-links { display:flex; align-items:center; gap:24px; }
 .nav-link {
   font-size:13px; font-weight:500;
@@ -88,7 +88,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   transition:color .2s;
 }
 .nav-link:hover { color:var(--blue); }
- 
+
 .nav-cta {
   padding:10px 22px;
   background:var(--blue); color:var(--white);
@@ -100,7 +100,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   white-space:nowrap;
 }
 .nav-cta:hover { background:var(--blue-mid); box-shadow:var(--shadow-blue); transform:translateY(-1px); }
- 
+
 /* ── HERO ── */
 .hero {
   padding:80px 24px 72px;
@@ -108,7 +108,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   position:relative; overflow:hidden;
   background:var(--white);
 }
- 
+
 /* Subtle dot grid */
 .hero::before {
   content:'';
@@ -119,7 +119,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   mask-image:radial-gradient(ellipse 85% 85% at 50% 50%, black 40%, transparent 100%);
   pointer-events:none;
 }
- 
+
 /* Soft color blobs */
 .hero-blob {
   position:absolute; border-radius:50%;
@@ -127,9 +127,9 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 }
 .blob-1 { width:400px; height:400px; top:-100px; right:-80px; background:rgba(26,79,138,.06); }
 .blob-2 { width:300px; height:300px; bottom:-60px; left:-60px; background:rgba(13,148,136,.06); }
- 
+
 .hero-inner { position:relative; z-index:1; }
- 
+
 .hero-eyebrow {
   display:inline-flex; align-items:center; gap:8px;
   background:var(--blue-pale);
@@ -140,28 +140,28 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   margin-bottom:28px;
   opacity:0; animation:fadeUp .6s .1s ease forwards;
 }
- 
+
 .eyebrow-dot {
   width:7px; height:7px; border-radius:50%; background:var(--teal);
   animation:blink 2s ease-in-out infinite;
 }
 @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
- 
+
 .hero-title {
   font-family:'Lora',serif;
-  font-size:clamp(40px,7vw,72px);
+  font-size:clamp(48px,8vw,84px);
   font-weight:600; line-height:1.08;
   color:var(--text); margin-bottom:22px;
   opacity:0; animation:fadeUp .6s .25s ease forwards;
   letter-spacing:-1px;
 }
- 
+
 .hero-title .line-accent {
   color:var(--blue);
   font-style:italic;
   position:relative; display:inline-block;
 }
- 
+
 /* Underline stroke under "link" */
 .hero-title .line-accent::after {
   content:'';
@@ -172,22 +172,22 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   animation:underline .5s .8s ease forwards;
 }
 @keyframes underline { to { transform:scaleX(1); } }
- 
+
 .hero-sub {
-  font-size:clamp(15px,2vw,18px);
+  font-size:clamp(16px,2vw,20px);
   color:var(--text-mid); line-height:1.75;
   max-width:540px; margin:0 auto 40px;
   opacity:0; animation:fadeUp .6s .4s ease forwards;
   font-weight:400;
 }
- 
+
 .hero-actions {
   display:flex; align-items:center; gap:12px;
   flex-wrap:wrap; justify-content:center;
   margin-bottom:56px;
   opacity:0; animation:fadeUp .6s .55s ease forwards;
 }
- 
+
 .btn-primary {
   padding:16px 32px;
   background:var(--blue); color:var(--white);
@@ -199,7 +199,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   letter-spacing:.2px;
 }
 .btn-primary:hover { background:var(--blue-mid); transform:translateY(-2px); box-shadow:var(--shadow-blue); }
- 
+
 .btn-ghost {
   padding:15px 28px;
   background:var(--white); color:var(--text-mid);
@@ -211,7 +211,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   text-decoration:none; display:inline-block;
 }
 .btn-ghost:hover { border-color:var(--blue); color:var(--blue); }
- 
+
 /* Hero stats strip */
 .hero-stats {
   display:inline-flex; align-items:stretch;
@@ -232,9 +232,9 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   font-weight:600; line-height:1; margin-bottom:5px;
 }
 .hstat-label { font-size:11px; color:var(--text-dim); letter-spacing:.3px; }
- 
+
 @keyframes fadeUp { from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
- 
+
 /* ── MOCKUP ── */
 .mockup-section {
   padding:0 24px 80px;
@@ -242,7 +242,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   position:relative; z-index:1;
   opacity:0; animation:fadeUp .7s .9s ease forwards;
 }
- 
+
 .mockup-frame {
   background:var(--white);
   border:1.5px solid var(--border);
@@ -252,21 +252,21 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   max-width:340px; width:100%;
   position:relative;
 }
- 
+
 .mockup-frame::before {
   content:'';
   position:absolute; top:0; left:0; right:0; height:3px;
   background:linear-gradient(90deg, var(--blue), var(--teal));
   border-radius:24px 24px 0 0;
 }
- 
+
 .mockup-bar {
   display:flex; gap:6px; padding-bottom:14px;
   border-bottom:1px solid var(--border);
   margin-bottom:14px;
 }
 .mock-dot { width:8px; height:8px; border-radius:50%; }
- 
+
 .mock-hero {
   background:var(--snow); border-radius:12px; border:1px solid var(--border);
   padding:14px; text-align:center; margin-bottom:10px;
@@ -279,7 +279,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 }
 .mock-name { font-size:13px; font-weight:700; color:var(--text); margin-bottom:2px; }
 .mock-spec { font-size:10px; color:var(--text-dim); }
- 
+
 .mock-cal { background:var(--snow); border:1px solid var(--border); border-radius:10px; padding:10px; margin-bottom:10px; }
 .mock-cal-head { display:flex; justify-content:space-between; font-size:11px; font-weight:600; color:var(--text-mid); margin-bottom:8px; }
 .mock-days { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; }
@@ -287,17 +287,17 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 .mock-day.av { background:var(--teal-pale); color:var(--teal); font-weight:700; }
 .mock-day.sel { background:var(--teal); color:white; font-weight:700; }
 .mock-day.tod { border:1.5px solid var(--blue); color:var(--blue); font-weight:700; }
- 
+
 .mock-slots { display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-bottom:10px; }
 .mock-slot { padding:7px 4px; text-align:center; border-radius:7px; border:1px solid var(--border); font-size:9px; font-family:'DM Mono',monospace; color:var(--text-mid); }
 .mock-slot.sel { background:var(--blue); color:white; border-color:var(--blue); }
 .mock-slot.tk { opacity:.4; text-decoration:line-through; }
- 
+
 .mock-btn {
   width:100%; padding:11px; background:var(--blue); color:white;
   border:none; border-radius:9px; font-size:12px; font-weight:700;
 }
- 
+
 /* Floating badges */
 .float-badge {
   position:absolute;
@@ -308,23 +308,23 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   white-space:nowrap;
 }
 @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-7px);} }
- 
+
 .fb-1 { right:-20px; top:18%; animation-delay:0s; }
 .fb-2 { left:-20px; bottom:22%; animation-delay:.6s; }
- 
+
 .fb-inner { display:flex; align-items:center; gap:8px; }
 .fb-icon { font-size:18px; }
 .fb-text-label { font-size:10px; color:var(--text-dim); }
 .fb-text-val { font-size:12px; font-weight:700; color:var(--text); }
- 
+
 /* ── DIVIDER ── */
 .divider { height:1px; background:var(--border); margin:0; }
- 
+
 /* ── SECTION COMMON ── */
 .section { padding:80px 24px; }
 .container { max-width:1060px; margin:0 auto; }
 .container-sm { max-width:680px; margin:0 auto; }
- 
+
 .sec-eyebrow {
   font-size:10px; font-weight:700; letter-spacing:2.5px;
   text-transform:uppercase; color:var(--blue);
@@ -341,12 +341,12 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   text-align:center; line-height:1.75;
   max-width:500px; margin:0 auto 56px;
 }
- 
+
 /* ── PROBLEMA ── */
 .problema { background:var(--snow); }
- 
+
 .prob-grid { display:grid; grid-template-columns:1fr; gap:12px; max-width:680px; margin:0 auto; }
- 
+
 .prob-item {
   display:flex; gap:18px; align-items:flex-start;
   padding:22px 24px;
@@ -355,20 +355,20 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   transition:all .25s;
 }
 .prob-item:hover { box-shadow:var(--shadow-sm); border-color:var(--border2); transform:translateY(-1px); }
- 
+
 .prob-icon {
   width:46px; height:46px; border-radius:10px; flex-shrink:0;
   display:flex; align-items:center; justify-content:center;
   font-size:20px; border:1px solid var(--border);
   background:var(--pearl);
 }
- 
+
 .prob-text h3 { font-size:15px; font-weight:700; color:var(--text); margin-bottom:5px; }
 .prob-text p { font-size:13px; color:var(--text-mid); line-height:1.65; }
- 
+
 /* ── COMO FUNCIONA ── */
 .como { background:var(--white); }
- 
+
 .pasos-wrap { max-width:600px; margin:0 auto; position:relative; }
 .pasos-wrap::before {
   content:''; position:absolute;
@@ -376,11 +376,11 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   background:linear-gradient(to bottom, var(--blue), var(--teal), transparent);
   opacity:.2;
 }
- 
+
 .paso {
   display:flex; gap:20px; padding:0 0 28px;
 }
- 
+
 .paso-circle {
   width:48px; height:48px; border-radius:50%; flex-shrink:0;
   background:var(--white); border:2px solid var(--blue);
@@ -389,16 +389,16 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   color:var(--blue); position:relative; z-index:1;
   box-shadow:var(--shadow-xs);
 }
- 
+
 .paso-body { padding-top:10px; }
 .paso-body h3 { font-size:15px; font-weight:700; color:var(--text); margin-bottom:5px; }
 .paso-body p { font-size:13px; color:var(--text-mid); line-height:1.65; }
- 
+
 /* ── PARA QUIEN ── */
 .para-quien { background:var(--snow); }
- 
+
 .prof-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
- 
+
 .prof-card {
   padding:20px 18px;
   background:var(--white); border:1px solid var(--border);
@@ -413,18 +413,18 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 .prof-icon { font-size:26px; margin-bottom:10px; }
 .prof-name { font-size:14px; font-weight:700; color:var(--text); margin-bottom:4px; }
 .prof-desc { font-size:12px; color:var(--text-dim); line-height:1.5; }
- 
+
 /* ── PLANES ── */
 .planes { background:var(--white); }
- 
+
 .promo-note {
   text-align:center; font-size:12px;
   color:var(--text-dim); margin-bottom:32px;
   font-style:italic;
 }
- 
+
 .planes-grid { display:grid; grid-template-columns:1fr; gap:14px; max-width:440px; margin:0 auto; }
- 
+
 .plan-card {
   background:var(--white); border:1.5px solid var(--border);
   border-radius:18px; padding:26px 22px;
@@ -432,7 +432,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   transition:all .2s; box-shadow:var(--shadow-xs);
 }
 .plan-card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
- 
+
 .plan-card.featured {
   border-color:var(--blue);
   box-shadow:0 0 0 4px rgba(26,79,138,.06), var(--shadow-md);
@@ -442,7 +442,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   background:linear-gradient(90deg, var(--blue), var(--teal));
   border-radius:18px 18px 0 0;
 }
- 
+
 .plan-badge {
   display:inline-block; font-size:9px; font-weight:700;
   letter-spacing:1.5px; text-transform:uppercase;
@@ -453,19 +453,19 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 .badge-prem { background:var(--gold-pale); color:var(--gold); border:1px solid rgba(184,136,42,.2); }
 .badge-clin { background:rgba(139,92,246,.06); color:#7c3aed; border:1px solid rgba(139,92,246,.2); }
 .badge-pop  { background:var(--blue); color:white; }
- 
+
 .plan-promo-strip {
   background:linear-gradient(90deg,var(--blue),var(--teal));
   color:white; font-size:9px; font-weight:700; letter-spacing:1.5px;
   padding:5px 14px; text-align:center; border-radius:8px;
   margin-bottom:14px; text-transform:uppercase;
 }
- 
+
 .plan-name {
   font-family:'Lora',serif;
   font-size:24px; font-weight:600; color:var(--text); margin-bottom:8px;
 }
- 
+
 .plan-price-num {
   font-family:'Lora',serif;
   font-size:42px; font-weight:600; color:var(--text); line-height:1;
@@ -480,7 +480,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   border-left:2px solid var(--border2);
 }
 .plan-divider { height:1px; background:var(--border); margin:14px 0; }
- 
+
 .plan-features { list-style:none; }
 .plan-features li {
   display:flex; gap:10px; align-items:flex-start;
@@ -492,7 +492,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 .feat-yes { color:var(--teal); font-size:13px; flex-shrink:0; margin-top:1px; font-weight:700; }
 .feat-no  { color:var(--text-xdim); font-size:13px; flex-shrink:0; margin-top:1px; }
 .feat-ok  { color:var(--text); }
- 
+
 .btn-plan {
   width:100%; padding:14px; border:none; border-radius:10px;
   font-family:'Plus Jakarta Sans',sans-serif;
@@ -509,7 +509,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 .btn-gold:hover  { background:rgba(184,136,42,.12); }
 .btn-violet{ background:rgba(124,58,237,.07); color:#7c3aed; border:1.5px solid rgba(124,58,237,.2); }
 .btn-violet:hover{ background:rgba(124,58,237,.13); }
- 
+
 /* ── DIFERENCIADORES ── */
 .diff { background:var(--snow); }
 .diff-grid { display:grid; grid-template-columns:1fr; gap:10px; max-width:680px; margin:0 auto; }
@@ -525,7 +525,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 }
 .diff-text h3 { font-size:14px; font-weight:700; color:var(--text); margin-bottom:3px; }
 .diff-text p { font-size:12px; color:var(--text-mid); line-height:1.6; }
- 
+
 /* ── TESTIMONIOS ── */
 .testimonios { background:var(--white); }
 .testi-grid { display:grid; grid-template-columns:1fr; gap:12px; max-width:680px; margin:0 auto; }
@@ -545,7 +545,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 .testi-av { width:36px; height:36px; border-radius:50%; background:var(--pearl); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:16px; }
 .testi-name { font-size:13px; font-weight:700; color:var(--text); }
 .testi-role { font-size:11px; color:var(--text-dim); }
- 
+
 /* ── CTA FINAL ── */
 .cta-final {
   background:var(--blue-deep);
@@ -566,7 +566,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 }
 .cta-inner { position:relative; z-index:1; }
 .cta-logo { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:28px; }
- 
+
 .cta-title {
   font-family:'Lora',serif;
   font-size:clamp(32px,5vw,56px); font-weight:600;
@@ -574,11 +574,11 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   letter-spacing:-.5px;
 }
 .cta-title em { font-style:italic; color:var(--teal-lt); }
- 
+
 .cta-sub { font-size:16px; color:rgba(255,255,255,.65); margin-bottom:36px; line-height:1.7; }
- 
+
 .cta-actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
- 
+
 .btn-cta-primary {
   padding:16px 32px; background:white; color:var(--blue);
   border:none; border-radius:10px;
@@ -588,7 +588,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   display:inline-block;
 }
 .btn-cta-primary:hover { background:var(--snow); transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.2); }
- 
+
 .btn-cta-ghost {
   padding:15px 28px; background:transparent; color:rgba(255,255,255,.8);
   border:1.5px solid rgba(255,255,255,.25);
@@ -599,9 +599,9 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   display:inline-block;
 }
 .btn-cta-ghost:hover { border-color:rgba(255,255,255,.6); color:white; }
- 
+
 .cta-note { font-size:12px; color:rgba(255,255,255,.35); margin-top:20px; }
- 
+
 /* ── FOOTER ── */
 footer {
   background:var(--snow); border-top:1px solid var(--border);
@@ -616,11 +616,11 @@ footer {
 .footer-link { font-size:12px; color:var(--text-dim); text-decoration:none; transition:color .2s; }
 .footer-link:hover { color:var(--blue); }
 .footer-copy { font-size:12px; color:var(--text-xdim); }
- 
+
 /* ── REVEAL ── */
 .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
 .reveal.visible { opacity:1; transform:translateY(0); }
- 
+
 /* ── RESPONSIVE ── */
 @media(max-width:640px){
   .nav-links { display:none; }
@@ -631,10 +631,16 @@ footer {
   .prof-grid { grid-template-columns:1fr 1fr; }
   .footer-inner { flex-direction:column; text-align:center; }
 }
+.mock-day-name{text-align:center;font-size:8px;font-weight:700;color:var(--text-xdim);padding:2px 0 4px;}
+.mock-day-card{display:flex;align-items:center;justify-content:center;border-radius:6px;border:1px solid var(--border);background:var(--white);font-size:10px;font-weight:600;color:var(--text-dim);min-height:22px;}
+.mock-day-card.av{background:var(--teal-pale);color:var(--teal);border-color:rgba(13,148,136,.25);}
+.mock-day-card.sel{background:var(--teal);color:white;border-color:var(--teal);}
+.mock-day-card.tod{border:1.5px solid var(--blue);color:var(--blue);background:var(--blue-pale);}
+.mock-day-card.dim{color:var(--text-xdim);background:var(--snow);}
 </style>
 </head>
 <body>
- 
+
 <!-- ── NAV ── -->
 <nav id="navbar">
   <a href="#" class="logo-svg">
@@ -647,54 +653,54 @@ footer {
     </svg>
     <span class="logo-wordmark">Agend<em>ado</em>.</span>
   </a>
- 
+
   <div class="nav-links">
     <a class="nav-link" href="#como">Cómo funciona</a>
     <a class="nav-link" href="#planes">Planes</a>
     <a class="nav-link" href="#para-quien">Para quién</a>
     <a class="nav-link" href="#contacto">Contacto</a>
   </div>
- 
+
   <a class="nav-cta" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Agendado" target="_blank">
     Empezar gratis
   </a>
 </nav>
- 
+
 <!-- ── HERO ── -->
 <div class="hero">
   <div class="hero-blob blob-1"></div>
   <div class="hero-blob blob-2"></div>
   <div class="hero-inner">
- 
+
     <div class="hero-eyebrow">
       <span class="eyebrow-dot"></span>
       Agenda online para profesionales
     </div>
- 
+
     <h1 class="hero-title">
       Tu agenda.<br>
       Un <span class="line-accent">link</span>.<br>
       Sin complicaciones.
     </h1>
- 
+
     <p class="hero-sub">
-      Compartís un link y tus pacientes eligen turno en segundos. Sin llamadas, sin WhatsApp de ida y vuelta. Listo en 48 horas.
+      Compartís un link, tus pacientes eligen turno en segundos y vos gestionás todo desde un panel propio. Sin llamadas. Sin complicaciones. Listo en 48 horas.
     </p>
- 
+
     <div class="hero-actions">
       <a class="btn-primary" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Agendado" target="_blank">Empezar gratis →</a>
       <a class="btn-ghost" href="#como">Ver cómo funciona</a>
     </div>
- 
+
     <div class="hero-stats">
       <div class="hstat"><div class="hstat-num">48hs</div><div class="hstat-label">Tiempo de entrega</div></div>
       <div class="hstat"><div class="hstat-num">$0</div><div class="hstat-label">Para empezar</div></div>
       <div class="hstat"><div class="hstat-num">∞</div><div class="hstat-label">Especialidades</div></div>
     </div>
- 
+
   </div>
 </div>
- 
+
 <!-- ── MOCKUP ── -->
 <div class="mockup-section">
   <div style="position:relative;max-width:340px;width:100%">
@@ -718,16 +724,19 @@ footer {
         <div class="mock-spec">Cirugía Dentomaxilar · Tucumán</div>
       </div>
       <div class="mock-cal">
-        <div class="mock-cal-head"><span>‹</span><span>Abril 2026</span><span>›</span></div>
+        <div class="mock-cal-head"><span>‹</span><span style="font-weight:700">Mayo 2026</span><span>›</span></div>
         <div class="mock-days">
-          <div class="mock-day">L</div><div class="mock-day">M</div><div class="mock-day">M</div>
-          <div class="mock-day">J</div><div class="mock-day">V</div>
-          <div class="mock-day" style="opacity:.3">S</div><div class="mock-day" style="opacity:.3">D</div>
-          <div class="mock-day av">7</div><div class="mock-day av">8</div><div class="mock-day tod">9</div>
-          <div class="mock-day av">10</div><div class="mock-day av">11</div>
-          <div class="mock-day" style="opacity:.25">12</div><div class="mock-day" style="opacity:.25">13</div>
-          <div class="mock-day av">14</div><div class="mock-day sel">15</div><div class="mock-day av">16</div>
-          <div class="mock-day av">17</div><div class="mock-day av">18</div>
+          <div class="mock-day-name">L</div><div class="mock-day-name">M</div><div class="mock-day-name">M</div>
+          <div class="mock-day-name">J</div><div class="mock-day-name">V</div>
+          <div class="mock-day-name" style="opacity:.4">S</div><div class="mock-day-name" style="opacity:.4">D</div>
+          <div class="mock-day-card av">5</div><div class="mock-day-card av">6</div>
+          <div class="mock-day-card av">7</div><div class="mock-day-card tod">8</div>
+          <div class="mock-day-card av">9</div>
+          <div class="mock-day-card dim">10</div><div class="mock-day-card dim">11</div>
+          <div class="mock-day-card av">12</div><div class="mock-day-card av">13</div>
+          <div class="mock-day-card sel">14</div><div class="mock-day-card av">15</div>
+          <div class="mock-day-card av">16</div>
+          <div class="mock-day-card dim">17</div><div class="mock-day-card dim">18</div>
         </div>
       </div>
       <div class="mock-slots">
@@ -740,7 +749,7 @@ footer {
       </div>
       <button class="mock-btn">Confirmar turno →</button>
     </div>
- 
+
     <!-- Floating badges -->
     <div class="float-badge fb-1">
       <div class="fb-inner">
@@ -751,7 +760,7 @@ footer {
         </div>
       </div>
     </div>
- 
+
     <div class="float-badge fb-2">
       <div class="fb-inner">
         <span class="fb-icon">🔔</span>
@@ -763,9 +772,9 @@ footer {
     </div>
   </div>
 </div>
- 
+
 <div class="divider"></div>
- 
+
 <!-- ── PROBLEMA ── -->
 <section class="section problema" id="problema">
   <div class="container-sm">
@@ -790,16 +799,16 @@ footer {
       <div class="prob-item reveal">
         <div class="prob-icon">😰</div>
         <div class="prob-text">
-          <h3>Cero imagen profesional</h3>
-          <p>Tus colegas ya tienen agenda online. Seguir con llamadas te hace parecer desorganizado frente a nuevos pacientes.</p>
+          <h3>Sin control de tu agenda</h3>
+          <p>No sabés cuántos turnos tenés esta semana, quién canceló o quién no confirmó. La información está dispersa en WhatsApp.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
- 
+
 <div class="divider"></div>
- 
+
 <!-- ── COMO FUNCIONA ── -->
 <section class="section como" id="como">
   <div class="container-sm">
@@ -809,30 +818,30 @@ footer {
     <div class="pasos-wrap">
       <div class="paso reveal">
         <div class="paso-circle">1</div>
-        <div class="paso-body"><h3>Nos mandás tus datos</h3><p>Nombre, especialidad, horarios y foto. Nosotros configuramos todo. Vos no tocás nada técnico.</p></div>
+        <div class="paso-body"><h3>Nos mandás tus datos</h3><p>Nombre, título, especialidad, horarios y foto. Nosotros configuramos todo — vos no tocás nada técnico.</p></div>
       </div>
       <div class="paso reveal">
         <div class="paso-circle">2</div>
-        <div class="paso-body"><h3>Recibís tu link en 48hs</h3><p>Tu página personalizada, única, con tu marca y tus horarios. Lista para compartir.</p></div>
+        <div class="paso-body"><h3>Recibís tu link en 48hs</h3><p>Tu página personalizada con tu foto, tu marca y tus horarios reales. Lista para compartir donde quieras.</p></div>
       </div>
       <div class="paso reveal">
         <div class="paso-circle">3</div>
-        <div class="paso-body"><h3>Lo compartís donde quieras</h3><p>Instagram, WhatsApp, tarjeta personal, email. Un solo link para todo.</p></div>
+        <div class="paso-body"><h3>Tus pacientes reservan solos</h3><p>Eligen día y horario desde el calendario. Reciben confirmación inmediata y recordatorio automático 24hs antes.</p></div>
       </div>
       <div class="paso reveal">
         <div class="paso-circle">4</div>
-        <div class="paso-body"><h3>Los turnos llegan solos</h3><p>El paciente elige día y horario. Ambos reciben confirmación y recordatorio automático 24hs antes.</p></div>
+        <div class="paso-body"><h3>Vos también podés cargar turnos</h3><p>Desde tu panel cargás turnos de pacientes que te contactan. Se genera un WhatsApp pre-redactado con la confirmación.</p></div>
       </div>
       <div class="paso reveal">
         <div class="paso-circle">5</div>
-        <div class="paso-body"><h3>Gestionás todo desde tu panel</h3><p>Confirmá, cancelá, contactá pacientes por WhatsApp. Todo en un solo lugar.</p></div>
+        <div class="paso-body"><h3>Tu agenda mensual de un vistazo</h3><p>Vista mensual con indicador de turnos por día. Sabés exactamente dónde tenés actividad sin buscar nada.</p></div>
       </div>
     </div>
   </div>
 </section>
- 
+
 <div class="divider"></div>
- 
+
 <!-- ── PARA QUIEN ── -->
 <section class="section para-quien" id="para-quien">
   <div class="container">
@@ -851,9 +860,9 @@ footer {
     </div>
   </div>
 </section>
- 
+
 <div class="divider"></div>
- 
+
 <!-- ── PLANES ── -->
 <section class="section planes" id="planes">
   <div class="container">
@@ -861,9 +870,9 @@ footer {
     <h2 class="sec-title reveal">Empezá gratis.<br>Escalá cuando quieras.</h2>
     <p class="sec-sub reveal">Sin contratos, sin permanencia. Cancelás cuando querés.</p>
     <p class="promo-note reveal">* Precios promocionales de lanzamiento. Fijás tu precio contratando hoy.</p>
- 
+
     <div class="planes-grid">
- 
+
       <!-- FREE -->
       <div class="plan-card reveal">
         <span class="plan-badge badge-free">Gratis para siempre</span>
@@ -883,7 +892,7 @@ footer {
         </ul>
         <a class="btn-plan btn-free" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20el%20plan%20Free%20de%20Agendado" target="_blank">Empezar gratis →</a>
       </div>
- 
+
       <!-- PROFESIONAL -->
       <div class="plan-card featured reveal">
         <span class="plan-badge badge-pop">⭐ Más elegido</span>
@@ -904,7 +913,7 @@ footer {
         </ul>
         <a class="btn-plan btn-blue" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20el%20plan%20Profesional%20de%20Agendado" target="_blank">Contratar Profesional →</a>
       </div>
- 
+
       <!-- PREMIUM -->
       <div class="plan-card reveal">
         <span class="plan-badge badge-prem">Premium</span>
@@ -924,7 +933,7 @@ footer {
         </ul>
         <a class="btn-plan btn-gold" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20el%20plan%20Premium%20de%20Agendado" target="_blank">Contratar Premium →</a>
       </div>
- 
+
       <!-- CLÍNICA -->
       <div class="plan-card reveal">
         <div class="plan-promo-strip">⭐ Precio promocional de lanzamiento</div>
@@ -946,13 +955,13 @@ footer {
         </ul>
         <a class="btn-plan btn-violet" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20consultar%20el%20plan%20Cl%C3%ADnica%20de%20Agendado" target="_blank">Consultar disponibilidad →</a>
       </div>
- 
+
     </div>
   </div>
 </section>
- 
+
 <div class="divider"></div>
- 
+
 <!-- ── DIFERENCIADORES ── -->
 <section class="section diff">
   <div class="container-sm">
@@ -965,13 +974,13 @@ footer {
       <div class="diff-item reveal"><div class="diff-icon">💬</div><div class="diff-text"><h3>Soporte real</h3><p>Hablás con una persona, no con un bot. Respuesta por WhatsApp en menos de 24 horas.</p></div></div>
       <div class="diff-item reveal"><div class="diff-icon">🇦🇷</div><div class="diff-text"><h3>Pensado para Argentina</h3><p>Precios en USD con equivalencia en ARS al día, soporte local. Entendemos al profesional argentino.</p></div></div>
       <div class="diff-item reveal"><div class="diff-icon">🔒</div><div class="diff-text"><h3>Sin permanencia</h3><p>Cancelás cuando querés. Confiamos en que el producto habla por sí solo.</p></div></div>
-      <div class="diff-item reveal"><div class="diff-icon">📱</div><div class="diff-text"><h3>Funciona como app nativa</h3><p>Tus pacientes lo sienten como una app. Sin descargar nada, directo desde el celular.</p></div></div>
+      <div class="diff-item reveal"><div class="diff-icon">📱</div><div class="diff-text"><h3>Funciona como app nativa</h3><p>Tus pacientes lo sienten como una app. Se puede instalar en el celular directo desde el navegador, sin App Store.</p></div></div>
     </div>
   </div>
 </section>
- 
+
 <div class="divider"></div>
- 
+
 <!-- ── TESTIMONIOS ── -->
 <section class="section testimonios">
   <div class="container-sm">
@@ -1005,7 +1014,7 @@ footer {
     </div>
   </div>
 </section>
- 
+
 <!-- ── CTA FINAL ── -->
 <section class="cta-final" id="contacto">
   <div class="cta-inner">
@@ -1019,13 +1028,13 @@ footer {
       </svg>
       <span style="font-family:'Lora',serif;font-size:26px;color:white;font-weight:500;letter-spacing:-.5px">Agend<em style="font-style:italic;color:var(--teal-lt)">ado</em>.</span>
     </div>
- 
+
     <h2 class="cta-title">
       Tu agenda online,<br>
       <em>lista en 48 horas.</em>
     </h2>
     <p class="cta-sub">Empezá gratis. Sin tarjeta. Sin instalaciones. Sin complicaciones.</p>
- 
+
     <div class="cta-actions">
       <a class="btn-cta-primary" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Agendado" target="_blank">💬 Hablar por WhatsApp</a>
       <a class="btn-cta-ghost" href="https://agendado-bruno.vercel.app" target="_blank">Ver demo en vivo →</a>
@@ -1040,7 +1049,7 @@ footer {
     </div>
   </div>
 </section>
- 
+
 <!-- ── FOOTER ── -->
 <footer>
   <div class="footer-inner">
@@ -1060,17 +1069,17 @@ footer {
       <a class="footer-link" href="#para-quien">Para quién</a>
       <a class="footer-link" href="https://agendado-bruno.vercel.app" target="_blank">Ver demo</a>
     </div>
-    <div class="footer-copy">© 2026 Agendado · Tucumán, Argentina</div>
+    <div class="footer-copy">© 2026 Agendado · Tucumán, Argentina · Todos los derechos reservados</div>
   </div>
 </footer>
- 
+
 <script>
 // Scroll reveal
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
- 
+
 // Nav scroll effect
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
@@ -1078,4 +1087,3 @@ window.addEventListener('scroll', () => {
 </script>
 </body>
 </html>
- 
