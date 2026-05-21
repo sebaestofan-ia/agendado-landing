@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agendado · La agenda online para profesionales</title>
-
+ 
 <!-- ── OPEN GRAPH / WhatsApp Preview ── -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://agendado.link" />
@@ -15,16 +15,16 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="es_AR" />
 <meta property="og:site_name" content="Agendado" />
-
+ 
 <!-- Twitter Card (también funciona en algunos previews) -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Agendado · Tu agenda online en 48 horas" />
 <meta name="twitter:description" content="Compartís un link, tus pacientes eligen turno en segundos. Empezá gratis." />
 <meta name="twitter:image" content="https://agendado.link/og-image.png" />
-
+ 
 <!-- WhatsApp específico -->
 <meta property="og:image:type" content="image/png" />
-
+ 
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -34,31 +34,31 @@
   --mist:#e2e8f4;
   --border:#d8e0ef;
   --border2:#c4cfea;
-
+ 
   --blue:#1a4f8a;
   --blue-mid:#2563b0;
   --blue-lt:#4a7fc1;
   --blue-pale:rgba(26,79,138,.06);
   --blue-glow:rgba(26,79,138,.14);
   --blue-deep:#0f3060;
-
+ 
   --teal:#0d9488;
   --teal-lt:#14b8a6;
   --teal-pale:rgba(13,148,136,.07);
-
+ 
   --gold:#b8882a;
   --gold-pale:rgba(184,136,42,.07);
-
+ 
   --rose:#e11d48;
   --rose-pale:rgba(225,29,72,.06);
   --amber:#d97706;
   --amber-pale:rgba(217,119,6,.07);
-
+ 
   --text:#0f1f3d;
   --text-mid:#4a5980;
   --text-dim:#8a97b8;
   --text-xdim:#b8c2d8;
-
+ 
   --radius:14px;
   --shadow-xs:0 1px 3px rgba(15,31,61,.05);
   --shadow-sm:0 2px 8px rgba(15,31,61,.07),0 1px 3px rgba(15,31,61,.04);
@@ -66,10 +66,10 @@
   --shadow-lg:0 20px 48px rgba(15,31,61,.12),0 4px 12px rgba(15,31,61,.06);
   --shadow-blue:0 8px 28px rgba(26,79,138,.22);
 }
-
+ 
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-
+ 
 body{
   font-family:'Plus Jakarta Sans',sans-serif;
   background:var(--white);
@@ -77,7 +77,7 @@ body{
   overflow-x:hidden;
   line-height:1.6;
 }
-
+ 
 /* ── LOGO SVG INLINE ── */
 .logo-svg { display:inline-flex; align-items:center; gap:10px; text-decoration:none; }
 .logo-mark { flex-shrink:0; }
@@ -88,7 +88,7 @@ body{
   line-height:1;
 }
 .logo-wordmark em { font-style:italic; color:var(--blue); }
-
+ 
 /* ── NAV ── */
 nav {
   position:sticky; top:0; z-index:200;
@@ -101,7 +101,7 @@ nav {
   transition:box-shadow .3s;
 }
 nav.scrolled { box-shadow:var(--shadow-sm); }
-
+ 
 .nav-links { display:flex; align-items:center; gap:24px; }
 .nav-link {
   font-size:13px; font-weight:500;
@@ -109,7 +109,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   transition:color .2s;
 }
 .nav-link:hover { color:var(--blue); }
-
+ 
 .nav-cta {
   padding:10px 22px;
   background:var(--blue); color:var(--white);
@@ -121,7 +121,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   white-space:nowrap;
 }
 .nav-cta:hover { background:var(--blue-mid); box-shadow:var(--shadow-blue); transform:translateY(-1px); }
-
+ 
 /* ── HERO ── */
 .hero {
   padding:80px 24px 72px;
@@ -129,7 +129,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   position:relative; overflow:hidden;
   background:var(--white);
 }
-
+ 
 .hero::before {
   content:'';
   position:absolute; inset:0;
@@ -139,16 +139,16 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   mask-image:radial-gradient(ellipse 85% 85% at 50% 50%, black 40%, transparent 100%);
   pointer-events:none;
 }
-
+ 
 .hero-blob {
   position:absolute; border-radius:50%;
   filter:blur(80px); pointer-events:none; z-index:0;
 }
 .blob-1 { width:400px; height:400px; top:-100px; right:-80px; background:rgba(26,79,138,.06); }
 .blob-2 { width:300px; height:300px; bottom:-60px; left:-60px; background:rgba(13,148,136,.06); }
-
+ 
 .hero-inner { position:relative; z-index:1; }
-
+ 
 .hero-eyebrow {
   display:inline-flex; align-items:center; gap:8px;
   background:var(--blue-pale);
@@ -159,13 +159,13 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   margin-bottom:28px;
   opacity:0; animation:fadeUp .6s .1s ease forwards;
 }
-
+ 
 .eyebrow-dot {
   width:7px; height:7px; border-radius:50%; background:var(--teal);
   animation:blink 2s ease-in-out infinite;
 }
 @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
-
+ 
 .hero-title {
   font-family:'Lora',serif;
   font-size:clamp(48px,8vw,84px);
@@ -174,13 +174,13 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   opacity:0; animation:fadeUp .6s .25s ease forwards;
   letter-spacing:-1px;
 }
-
+ 
 .hero-title .line-accent {
   color:var(--blue);
   font-style:italic;
   position:relative; display:inline-block;
 }
-
+ 
 .hero-title .line-accent::after {
   content:'';
   position:absolute; bottom:-4px; left:0; right:0;
@@ -190,7 +190,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   animation:underline .5s .8s ease forwards;
 }
 @keyframes underline { to { transform:scaleX(1); } }
-
+ 
 .hero-sub {
   font-size:clamp(16px,2vw,20px);
   color:var(--text-mid); line-height:1.75;
@@ -198,14 +198,14 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   opacity:0; animation:fadeUp .6s .4s ease forwards;
   font-weight:400;
 }
-
+ 
 .hero-actions {
   display:flex; align-items:center; gap:12px;
   flex-wrap:wrap; justify-content:center;
   margin-bottom:56px;
   opacity:0; animation:fadeUp .6s .55s ease forwards;
 }
-
+ 
 .btn-primary {
   padding:16px 32px;
   background:var(--blue); color:var(--white);
@@ -217,7 +217,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   letter-spacing:.2px;
 }
 .btn-primary:hover { background:var(--blue-mid); transform:translateY(-2px); box-shadow:var(--shadow-blue); }
-
+ 
 .btn-ghost {
   padding:15px 28px;
   background:var(--white); color:var(--text-mid);
@@ -229,7 +229,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   text-decoration:none; display:inline-block;
 }
 .btn-ghost:hover { border-color:var(--blue); color:var(--blue); }
-
+ 
 .hero-stats {
   display:inline-flex; align-items:stretch;
   background:var(--white);
@@ -249,9 +249,9 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   font-weight:600; line-height:1; margin-bottom:5px;
 }
 .hstat-label { font-size:11px; color:var(--text-dim); letter-spacing:.3px; }
-
+ 
 @keyframes fadeUp { from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
-
+ 
 /* ── MOCKUP ── */
 .mockup-section {
   padding:0 24px 80px;
@@ -259,7 +259,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   position:relative; z-index:1;
   opacity:0; animation:fadeUp .7s .9s ease forwards;
 }
-
+ 
 .mockup-frame {
   background:var(--white);
   border:1.5px solid var(--border);
@@ -269,21 +269,21 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   max-width:340px; width:100%;
   position:relative;
 }
-
+ 
 .mockup-frame::before {
   content:'';
   position:absolute; top:0; left:0; right:0; height:3px;
   background:linear-gradient(90deg, var(--blue), var(--teal));
   border-radius:24px 24px 0 0;
 }
-
+ 
 .mockup-bar {
   display:flex; gap:6px; padding-bottom:14px;
   border-bottom:1px solid var(--border);
   margin-bottom:14px;
 }
 .mock-dot { width:8px; height:8px; border-radius:50%; }
-
+ 
 .mock-hero {
   background:var(--snow); border-radius:12px; border:1px solid var(--border);
   padding:14px; text-align:center; margin-bottom:10px;
@@ -296,7 +296,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 }
 .mock-name { font-size:13px; font-weight:700; color:var(--text); margin-bottom:2px; }
 .mock-spec { font-size:10px; color:var(--text-dim); }
-
+ 
 .mock-cal { background:var(--snow); border:1px solid var(--border); border-radius:10px; padding:10px; margin-bottom:10px; }
 .mock-cal-head { display:flex; justify-content:space-between; font-size:11px; font-weight:600; color:var(--text-mid); margin-bottom:8px; }
 .mock-days { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; }
@@ -304,17 +304,17 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 .mock-day.av { background:var(--teal-pale); color:var(--teal); font-weight:700; }
 .mock-day.sel { background:var(--teal); color:white; font-weight:700; }
 .mock-day.tod { border:1.5px solid var(--blue); color:var(--blue); font-weight:700; }
-
+ 
 .mock-slots { display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-bottom:10px; }
 .mock-slot { padding:7px 4px; text-align:center; border-radius:7px; border:1px solid var(--border); font-size:9px; font-family:'DM Mono',monospace; color:var(--text-mid); }
 .mock-slot.sel { background:var(--blue); color:white; border-color:var(--blue); }
 .mock-slot.tk { opacity:.4; text-decoration:line-through; }
-
+ 
 .mock-btn {
   width:100%; padding:11px; background:var(--blue); color:white;
   border:none; border-radius:9px; font-size:12px; font-weight:700;
 }
-
+ 
 /* Floating badges */
 .float-badge {
   position:absolute;
@@ -325,23 +325,23 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   white-space:nowrap;
 }
 @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-7px);} }
-
+ 
 .fb-1 { right:-20px; top:18%; animation-delay:0s; }
 .fb-2 { left:-20px; bottom:22%; animation-delay:.6s; }
-
+ 
 .fb-inner { display:flex; align-items:center; gap:8px; }
 .fb-icon { font-size:18px; }
 .fb-text-label { font-size:10px; color:var(--text-dim); }
 .fb-text-val { font-size:12px; font-weight:700; color:var(--text); }
-
+ 
 /* ── DIVIDER ── */
 .divider { height:1px; background:var(--border); margin:0; }
-
+ 
 /* ── SECTION COMMON ── */
 .section { padding:80px 24px; }
 .container { max-width:1060px; margin:0 auto; }
 .container-sm { max-width:680px; margin:0 auto; }
-
+ 
 .sec-eyebrow {
   font-size:10px; font-weight:700; letter-spacing:2.5px;
   text-transform:uppercase; color:var(--blue);
@@ -358,7 +358,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   text-align:center; line-height:1.75;
   max-width:500px; margin:0 auto 56px;
 }
-
+ 
 /* ── PROBLEMA ── */
 .problema { background:var(--snow); }
 .prob-grid { display:grid; grid-template-columns:1fr; gap:12px; max-width:680px; margin:0 auto; }
@@ -378,7 +378,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 }
 .prob-text h3 { font-size:15px; font-weight:700; color:var(--text); margin-bottom:5px; }
 .prob-text p { font-size:13px; color:var(--text-mid); line-height:1.65; }
-
+ 
 /* ── COMO FUNCIONA ── */
 .como { background:var(--white); }
 .pasos-wrap { max-width:600px; margin:0 auto; position:relative; }
@@ -400,7 +400,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 .paso-body { padding-top:10px; }
 .paso-body h3 { font-size:15px; font-weight:700; color:var(--text); margin-bottom:5px; }
 .paso-body p { font-size:13px; color:var(--text-mid); line-height:1.65; }
-
+ 
 /* ── PARA QUIEN ── */
 .para-quien { background:var(--snow); }
 .prof-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
@@ -415,7 +415,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 .prof-icon { font-size:26px; margin-bottom:10px; }
 .prof-name { font-size:14px; font-weight:700; color:var(--text); margin-bottom:4px; }
 .prof-desc { font-size:12px; color:var(--text-dim); line-height:1.5; }
-
+ 
 /* ── PLANES ── */
 .planes { background:var(--white); }
 .promo-note { text-align:center; font-size:12px; color:var(--text-dim); margin-bottom:32px; font-style:italic; }
@@ -478,7 +478,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 .btn-gold:hover  { background:rgba(184,136,42,.12); }
 .btn-violet{ background:rgba(124,58,237,.07); color:#7c3aed; border:1.5px solid rgba(124,58,237,.2); }
 .btn-violet:hover{ background:rgba(124,58,237,.13); }
-
+ 
 /* ── DIFERENCIADORES ── */
 .diff { background:var(--snow); }
 .diff-grid { display:grid; grid-template-columns:1fr; gap:10px; max-width:680px; margin:0 auto; }
@@ -486,7 +486,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 .diff-icon { width:40px; height:40px; border-radius:10px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:17px; background:var(--blue-pale); border:1px solid rgba(26,79,138,.12); }
 .diff-text h3 { font-size:14px; font-weight:700; color:var(--text); margin-bottom:3px; }
 .diff-text p { font-size:12px; color:var(--text-mid); line-height:1.6; }
-
+ 
 /* ── TESTIMONIOS ── */
 .testimonios { background:var(--white); }
 .testi-grid { display:grid; grid-template-columns:1fr; gap:12px; max-width:680px; margin:0 auto; }
@@ -498,7 +498,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 .testi-av { width:36px; height:36px; border-radius:50%; background:var(--pearl); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:16px; }
 .testi-name { font-size:13px; font-weight:700; color:var(--text); }
 .testi-role { font-size:11px; color:var(--text-dim); }
-
+ 
 /* ── CTA FINAL ── */
 .cta-final { background:var(--blue-deep); padding:90px 24px; text-align:center; position:relative; overflow:hidden; }
 .cta-final::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle, rgba(255,255,255,.03) 1px, transparent 1px); background-size:28px 28px; }
@@ -514,7 +514,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 .btn-cta-ghost { padding:15px 28px; background:transparent; color:rgba(255,255,255,.8); border:1.5px solid rgba(255,255,255,.25); border-radius:10px; font-family:'Plus Jakarta Sans',sans-serif; font-size:15px; font-weight:600; cursor:pointer; transition:all .2s; text-decoration:none; display:inline-block; }
 .btn-cta-ghost:hover { border-color:rgba(255,255,255,.6); color:white; }
 .cta-note { font-size:12px; color:rgba(255,255,255,.35); margin-top:20px; }
-
+ 
 /* ── FOOTER ── */
 footer { background:var(--snow); border-top:1px solid var(--border); padding:32px 24px; }
 .footer-inner { max-width:1060px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
@@ -522,11 +522,11 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
 .footer-link { font-size:12px; color:var(--text-dim); text-decoration:none; transition:color .2s; }
 .footer-link:hover { color:var(--blue); }
 .footer-copy { font-size:12px; color:var(--text-xdim); }
-
+ 
 /* ── REVEAL ── */
 .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
 .reveal.visible { opacity:1; transform:translateY(0); }
-
+ 
 /* ── RESPONSIVE ── */
 @media(max-width:640px){
   .nav-links { display:none; }
@@ -543,7 +543,7 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
 .mock-day-card.sel{background:var(--teal);color:white;border-color:var(--teal);}
 .mock-day-card.tod{border:1.5px solid var(--blue);color:var(--blue);background:var(--blue-pale);}
 .mock-day-card.dim{color:var(--text-xdim);background:var(--snow);}
-
+ 
 /* ── DEMO BADGE ── */
 .demo-badge {
   display:inline-flex; align-items:center; gap:6px;
@@ -556,7 +556,7 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
 </style>
 </head>
 <body>
-
+ 
 <!-- ── NAV ── -->
 <nav id="navbar">
   <a href="#" class="logo-svg">
@@ -569,54 +569,54 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
     </svg>
     <span class="logo-wordmark">Agend<em>ado</em>.</span>
   </a>
-
+ 
   <div class="nav-links">
     <a class="nav-link" href="#como">Cómo funciona</a>
     <a class="nav-link" href="#planes">Planes</a>
     <a class="nav-link" href="#para-quien">Para quién</a>
     <a class="nav-link" href="#contacto">Contacto</a>
   </div>
-
+ 
   <a class="nav-cta" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Agendado" target="_blank">
     Empezar gratis
   </a>
 </nav>
-
+ 
 <!-- ── HERO ── -->
 <div class="hero">
   <div class="hero-blob blob-1"></div>
   <div class="hero-blob blob-2"></div>
   <div class="hero-inner">
-
+ 
     <div class="hero-eyebrow">
       <span class="eyebrow-dot"></span>
       Agenda online para profesionales
     </div>
-
+ 
     <h1 class="hero-title">
       Tu agenda.<br>
       Un <span class="line-accent">link</span>.<br>
       Sin complicaciones.
     </h1>
-
+ 
     <p class="hero-sub">
       Compartís un link, tus pacientes eligen turno en segundos y vos gestionás todo desde un panel propio. Sin llamadas. Sin complicaciones. Listo en 48 horas.
     </p>
-
+ 
     <div class="hero-actions">
       <a class="btn-primary" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Agendado" target="_blank">Empezar gratis →</a>
       <a class="btn-ghost" href="#como">Ver cómo funciona</a>
     </div>
-
+ 
     <div class="hero-stats">
       <div class="hstat"><div class="hstat-num">48hs</div><div class="hstat-label">Tiempo de entrega</div></div>
       <div class="hstat"><div class="hstat-num">$0</div><div class="hstat-label">Para empezar</div></div>
       <div class="hstat"><div class="hstat-num">∞</div><div class="hstat-label">Especialidades</div></div>
     </div>
-
+ 
   </div>
 </div>
-
+ 
 <!-- ── MOCKUP (DEMO) ── -->
 <div class="mockup-section">
   <div style="position:relative;max-width:340px;width:100%">
@@ -666,7 +666,7 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
       </div>
       <button class="mock-btn">Confirmar turno →</button>
     </div>
-
+ 
     <!-- Floating badges -->
     <div class="float-badge fb-1">
       <div class="fb-inner">
@@ -677,7 +677,7 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
         </div>
       </div>
     </div>
-
+ 
     <div class="float-badge fb-2">
       <div class="fb-inner">
         <span class="fb-icon">🔔</span>
@@ -689,9 +689,9 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
     </div>
   </div>
 </div>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- ── PROBLEMA ── -->
 <section class="section problema" id="problema">
   <div class="container-sm">
@@ -723,9 +723,9 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
     </div>
   </div>
 </section>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- ── COMO FUNCIONA ── -->
 <section class="section como" id="como">
   <div class="container-sm">
@@ -756,9 +756,9 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
     </div>
   </div>
 </section>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- ── PARA QUIEN ── -->
 <section class="section para-quien" id="para-quien">
   <div class="container">
@@ -777,9 +777,9 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
     </div>
   </div>
 </section>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- ── PLANES ── -->
 <section class="section planes" id="planes">
   <div class="container">
@@ -787,9 +787,9 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
     <h2 class="sec-title reveal">Empezá gratis.<br>Escalá cuando quieras.</h2>
     <p class="sec-sub reveal">Sin contratos, sin permanencia. Cancelás cuando querés.</p>
     <p class="promo-note reveal">* Precios promocionales de lanzamiento. Fijás tu precio contratando hoy.</p>
-
+ 
     <div class="planes-grid">
-
+ 
       <!-- FREE -->
       <div class="plan-card reveal">
         <span class="plan-badge badge-free">Gratis para siempre</span>
@@ -809,7 +809,7 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
         </ul>
         <a class="btn-plan btn-free" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20el%20plan%20Free%20de%20Agendado" target="_blank">Empezar gratis →</a>
       </div>
-
+ 
       <!-- PROFESIONAL -->
       <div class="plan-card featured reveal">
         <span class="plan-badge badge-pop">⭐ Más elegido</span>
@@ -830,7 +830,7 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
         </ul>
         <a class="btn-plan btn-blue" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20el%20plan%20Profesional%20de%20Agendado" target="_blank">Contratar Profesional →</a>
       </div>
-
+ 
       <!-- PREMIUM -->
       <div class="plan-card reveal">
         <span class="plan-badge badge-prem">Premium</span>
@@ -850,7 +850,7 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
         </ul>
         <a class="btn-plan btn-gold" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20el%20plan%20Premium%20de%20Agendado" target="_blank">Contratar Premium →</a>
       </div>
-
+ 
       <!-- CLÍNICA -->
       <div class="plan-card reveal">
         <div class="plan-promo-strip">⭐ Precio promocional de lanzamiento</div>
@@ -872,13 +872,13 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
         </ul>
         <a class="btn-plan btn-violet" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20consultar%20el%20plan%20Cl%C3%ADnica%20de%20Agendado" target="_blank">Consultar disponibilidad →</a>
       </div>
-
+ 
     </div>
   </div>
 </section>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- ── DIFERENCIADORES ── -->
 <section class="section diff">
   <div class="container-sm">
@@ -896,9 +896,9 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
     </div>
   </div>
 </section>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- ── TESTIMONIOS ── -->
 <section class="section testimonios">
   <div class="container-sm">
@@ -932,7 +932,7 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
     </div>
   </div>
 </section>
-
+ 
 <!-- ── CTA FINAL ── -->
 <section class="cta-final" id="contacto">
   <div class="cta-inner">
@@ -946,16 +946,16 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
       </svg>
       <span style="font-family:'Lora',serif;font-size:26px;color:white;font-weight:500;letter-spacing:-.5px">Agend<em style="font-style:italic;color:var(--teal-lt)">ado</em>.</span>
     </div>
-
+ 
     <h2 class="cta-title">
       Tu agenda online,<br>
       <em>lista en 48 horas.</em>
     </h2>
     <p class="cta-sub">Empezá gratis. Sin tarjeta. Sin instalaciones. Sin complicaciones.</p>
-
+ 
     <div class="cta-actions">
       <a class="btn-cta-primary" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Agendado" target="_blank">💬 Hablar por WhatsApp</a>
-      <a class="btn-cta-ghost" href="https://agendado-demo.vercel.app" target="_blank">Ver demo en vivo →</a>
+      <a class="btn-cta-ghost" href="https://demo.agendado.link" target="_blank">Ver demo en vivo →</a>
     </div>
     <p class="cta-note">¿Tenés dudas? Respondemos en menos de 24 horas.</p>
     <div style="margin-top:24px;display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 20px;">
@@ -967,7 +967,7 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
     </div>
   </div>
 </section>
-
+ 
 <!-- ── FOOTER ── -->
 <footer>
   <div class="footer-inner">
@@ -985,21 +985,22 @@ footer { background:var(--snow); border-top:1px solid var(--border); padding:32p
       <a class="footer-link" href="#como">Cómo funciona</a>
       <a class="footer-link" href="#planes">Planes</a>
       <a class="footer-link" href="#para-quien">Para quién</a>
-      <a class="footer-link" href="https://agendado-demo.vercel.app" target="_blank">Ver demo</a>
+      <a class="footer-link" href="https://demo.agendado.link" target="_blank">Ver demo</a>
     </div>
     <div class="footer-copy">© 2026 Agendado · Tucumán, Argentina · Todos los derechos reservados</div>
   </div>
 </footer>
-
+ 
 <script>
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
+ 
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
 });
 </script>
 </body>
 </html>
+ 
