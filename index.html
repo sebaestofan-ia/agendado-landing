@@ -4,6 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agendado · La agenda online para profesionales</title>
+
+<!-- ── OPEN GRAPH / WhatsApp Preview ── -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://agendado.link" />
+<meta property="og:title" content="Agendado · Tu agenda online en 48 horas" />
+<meta property="og:description" content="Compartís un link, tus pacientes eligen turno en segundos. Sin llamadas, sin complicaciones. Empezá gratis hoy." />
+<meta property="og:image" content="https://agendado.link/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="es_AR" />
+<meta property="og:site_name" content="Agendado" />
+
+<!-- Twitter Card (también funciona en algunos previews) -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Agendado · Tu agenda online en 48 horas" />
+<meta name="twitter:description" content="Compartís un link, tus pacientes eligen turno en segundos. Empezá gratis." />
+<meta name="twitter:image" content="https://agendado.link/og-image.png" />
+
+<!-- WhatsApp específico -->
+<meta property="og:image:type" content="image/png" />
+
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -109,7 +130,6 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   background:var(--white);
 }
 
-/* Subtle dot grid */
 .hero::before {
   content:'';
   position:absolute; inset:0;
@@ -120,7 +140,6 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   pointer-events:none;
 }
 
-/* Soft color blobs */
 .hero-blob {
   position:absolute; border-radius:50%;
   filter:blur(80px); pointer-events:none; z-index:0;
@@ -162,7 +181,6 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   position:relative; display:inline-block;
 }
 
-/* Underline stroke under "link" */
 .hero-title .line-accent::after {
   content:'';
   position:absolute; bottom:-4px; left:0; right:0;
@@ -212,7 +230,6 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 }
 .btn-ghost:hover { border-color:var(--blue); color:var(--blue); }
 
-/* Hero stats strip */
 .hero-stats {
   display:inline-flex; align-items:stretch;
   background:var(--white);
@@ -344,9 +361,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 
 /* ── PROBLEMA ── */
 .problema { background:var(--snow); }
-
 .prob-grid { display:grid; grid-template-columns:1fr; gap:12px; max-width:680px; margin:0 auto; }
-
 .prob-item {
   display:flex; gap:18px; align-items:flex-start;
   padding:22px 24px;
@@ -355,20 +370,17 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   transition:all .25s;
 }
 .prob-item:hover { box-shadow:var(--shadow-sm); border-color:var(--border2); transform:translateY(-1px); }
-
 .prob-icon {
   width:46px; height:46px; border-radius:10px; flex-shrink:0;
   display:flex; align-items:center; justify-content:center;
   font-size:20px; border:1px solid var(--border);
   background:var(--pearl);
 }
-
 .prob-text h3 { font-size:15px; font-weight:700; color:var(--text); margin-bottom:5px; }
 .prob-text p { font-size:13px; color:var(--text-mid); line-height:1.65; }
 
 /* ── COMO FUNCIONA ── */
 .como { background:var(--white); }
-
 .pasos-wrap { max-width:600px; margin:0 auto; position:relative; }
 .pasos-wrap::before {
   content:''; position:absolute;
@@ -376,11 +388,7 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   background:linear-gradient(to bottom, var(--blue), var(--teal), transparent);
   opacity:.2;
 }
-
-.paso {
-  display:flex; gap:20px; padding:0 0 28px;
-}
-
+.paso { display:flex; gap:20px; padding:0 0 28px; }
 .paso-circle {
   width:48px; height:48px; border-radius:50%; flex-shrink:0;
   background:var(--white); border:2px solid var(--blue);
@@ -389,16 +397,13 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   color:var(--blue); position:relative; z-index:1;
   box-shadow:var(--shadow-xs);
 }
-
 .paso-body { padding-top:10px; }
 .paso-body h3 { font-size:15px; font-weight:700; color:var(--text); margin-bottom:5px; }
 .paso-body p { font-size:13px; color:var(--text-mid); line-height:1.65; }
 
 /* ── PARA QUIEN ── */
 .para-quien { background:var(--snow); }
-
 .prof-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
-
 .prof-card {
   padding:20px 18px;
   background:var(--white); border:1px solid var(--border);
@@ -406,25 +411,15 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   box-shadow:var(--shadow-xs);
   cursor:default;
 }
-.prof-card:hover {
-  border-color:var(--blue); box-shadow:var(--shadow-sm);
-  transform:translateY(-2px);
-}
+.prof-card:hover { border-color:var(--blue); box-shadow:var(--shadow-sm); transform:translateY(-2px); }
 .prof-icon { font-size:26px; margin-bottom:10px; }
 .prof-name { font-size:14px; font-weight:700; color:var(--text); margin-bottom:4px; }
 .prof-desc { font-size:12px; color:var(--text-dim); line-height:1.5; }
 
 /* ── PLANES ── */
 .planes { background:var(--white); }
-
-.promo-note {
-  text-align:center; font-size:12px;
-  color:var(--text-dim); margin-bottom:32px;
-  font-style:italic;
-}
-
+.promo-note { text-align:center; font-size:12px; color:var(--text-dim); margin-bottom:32px; font-style:italic; }
 .planes-grid { display:grid; grid-template-columns:1fr; gap:14px; max-width:440px; margin:0 auto; }
-
 .plan-card {
   background:var(--white); border:1.5px solid var(--border);
   border-radius:18px; padding:26px 22px;
@@ -432,17 +427,12 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
   transition:all .2s; box-shadow:var(--shadow-xs);
 }
 .plan-card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
-
-.plan-card.featured {
-  border-color:var(--blue);
-  box-shadow:0 0 0 4px rgba(26,79,138,.06), var(--shadow-md);
-}
+.plan-card.featured { border-color:var(--blue); box-shadow:0 0 0 4px rgba(26,79,138,.06), var(--shadow-md); }
 .plan-card.featured::before {
   content:''; position:absolute; top:0; left:0; right:0; height:3px;
   background:linear-gradient(90deg, var(--blue), var(--teal));
   border-radius:18px 18px 0 0;
 }
-
 .plan-badge {
   display:inline-block; font-size:9px; font-weight:700;
   letter-spacing:1.5px; text-transform:uppercase;
@@ -453,46 +443,25 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 .badge-prem { background:var(--gold-pale); color:var(--gold); border:1px solid rgba(184,136,42,.2); }
 .badge-clin { background:rgba(139,92,246,.06); color:#7c3aed; border:1px solid rgba(139,92,246,.2); }
 .badge-pop  { background:var(--blue); color:white; }
-
 .plan-promo-strip {
   background:linear-gradient(90deg,var(--blue),var(--teal));
   color:white; font-size:9px; font-weight:700; letter-spacing:1.5px;
   padding:5px 14px; text-align:center; border-radius:8px;
   margin-bottom:14px; text-transform:uppercase;
 }
-
-.plan-name {
-  font-family:'Lora',serif;
-  font-size:24px; font-weight:600; color:var(--text); margin-bottom:8px;
-}
-
-.plan-price-num {
-  font-family:'Lora',serif;
-  font-size:42px; font-weight:600; color:var(--text); line-height:1;
-}
+.plan-name { font-family:'Lora',serif; font-size:24px; font-weight:600; color:var(--text); margin-bottom:8px; }
+.plan-price-num { font-family:'Lora',serif; font-size:42px; font-weight:600; color:var(--text); line-height:1; }
 .plan-price-num sup { font-size:18px; color:var(--text-mid); font-weight:400; font-family:'Plus Jakarta Sans',sans-serif; }
 .plan-price-period { font-size:12px; color:var(--text-dim); margin:4px 0; }
 .plan-price-ars { font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; color:var(--text-dim); line-height:1.5; margin-top:4px; }
-.plan-target {
-  font-size:12px; color:var(--text-mid); font-style:italic;
-  padding:10px 12px; background:var(--snow);
-  border-radius:8px; margin:14px 0; line-height:1.5;
-  border-left:2px solid var(--border2);
-}
+.plan-target { font-size:12px; color:var(--text-mid); font-style:italic; padding:10px 12px; background:var(--snow); border-radius:8px; margin:14px 0; line-height:1.5; border-left:2px solid var(--border2); }
 .plan-divider { height:1px; background:var(--border); margin:14px 0; }
-
 .plan-features { list-style:none; }
-.plan-features li {
-  display:flex; gap:10px; align-items:flex-start;
-  font-size:13px; color:var(--text-mid);
-  padding:7px 0; border-bottom:1px solid var(--border);
-  line-height:1.4;
-}
+.plan-features li { display:flex; gap:10px; align-items:flex-start; font-size:13px; color:var(--text-mid); padding:7px 0; border-bottom:1px solid var(--border); line-height:1.4; }
 .plan-features li:last-child { border-bottom:none; }
 .feat-yes { color:var(--teal); font-size:13px; flex-shrink:0; margin-top:1px; font-weight:700; }
 .feat-no  { color:var(--text-xdim); font-size:13px; flex-shrink:0; margin-top:1px; }
 .feat-ok  { color:var(--text); }
-
 .btn-plan {
   width:100%; padding:14px; border:none; border-radius:10px;
   font-family:'Plus Jakarta Sans',sans-serif;
@@ -513,32 +482,16 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 /* ── DIFERENCIADORES ── */
 .diff { background:var(--snow); }
 .diff-grid { display:grid; grid-template-columns:1fr; gap:10px; max-width:680px; margin:0 auto; }
-.diff-item {
-  display:flex; gap:16px; align-items:flex-start;
-  padding:18px 20px; background:var(--white);
-  border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow-xs);
-}
-.diff-icon {
-  width:40px; height:40px; border-radius:10px; flex-shrink:0;
-  display:flex; align-items:center; justify-content:center;
-  font-size:17px; background:var(--blue-pale); border:1px solid rgba(26,79,138,.12);
-}
+.diff-item { display:flex; gap:16px; align-items:flex-start; padding:18px 20px; background:var(--white); border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow-xs); }
+.diff-icon { width:40px; height:40px; border-radius:10px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:17px; background:var(--blue-pale); border:1px solid rgba(26,79,138,.12); }
 .diff-text h3 { font-size:14px; font-weight:700; color:var(--text); margin-bottom:3px; }
 .diff-text p { font-size:12px; color:var(--text-mid); line-height:1.6; }
 
 /* ── TESTIMONIOS ── */
 .testimonios { background:var(--white); }
 .testi-grid { display:grid; grid-template-columns:1fr; gap:12px; max-width:680px; margin:0 auto; }
-.testi-card {
-  padding:22px 24px; background:var(--snow);
-  border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow-xs);
-  position:relative; overflow:hidden;
-}
-.testi-card::before {
-  content:'"'; position:absolute; top:-14px; left:16px;
-  font-family:'Lora',serif; font-size:100px; color:var(--blue);
-  opacity:.06; line-height:1;
-}
+.testi-card { padding:22px 24px; background:var(--snow); border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow-xs); position:relative; overflow:hidden; }
+.testi-card::before { content:'"'; position:absolute; top:-14px; left:16px; font-family:'Lora',serif; font-size:100px; color:var(--blue); opacity:.06; line-height:1; }
 .testi-stars { color:var(--gold); font-size:14px; letter-spacing:2px; margin-bottom:10px; }
 .testi-text { font-size:13px; color:var(--text-mid); line-height:1.75; font-style:italic; margin-bottom:14px; }
 .testi-author { display:flex; align-items:center; gap:10px; }
@@ -547,71 +500,24 @@ nav.scrolled { box-shadow:var(--shadow-sm); }
 .testi-role { font-size:11px; color:var(--text-dim); }
 
 /* ── CTA FINAL ── */
-.cta-final {
-  background:var(--blue-deep);
-  padding:90px 24px;
-  text-align:center; position:relative; overflow:hidden;
-}
-.cta-final::before {
-  content:''; position:absolute; inset:0;
-  background-image:radial-gradient(circle, rgba(255,255,255,.03) 1px, transparent 1px);
-  background-size:28px 28px;
-}
-.cta-final::after {
-  content:''; position:absolute;
-  top:50%; left:50%; transform:translate(-50%,-50%);
-  width:600px; height:300px; border-radius:50%;
-  background:radial-gradient(circle, rgba(13,148,136,.15), transparent 70%);
-  pointer-events:none;
-}
+.cta-final { background:var(--blue-deep); padding:90px 24px; text-align:center; position:relative; overflow:hidden; }
+.cta-final::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle, rgba(255,255,255,.03) 1px, transparent 1px); background-size:28px 28px; }
+.cta-final::after { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:600px; height:300px; border-radius:50%; background:radial-gradient(circle, rgba(13,148,136,.15), transparent 70%); pointer-events:none; }
 .cta-inner { position:relative; z-index:1; }
 .cta-logo { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:28px; }
-
-.cta-title {
-  font-family:'Lora',serif;
-  font-size:clamp(32px,5vw,56px); font-weight:600;
-  color:white; line-height:1.1; margin-bottom:16px;
-  letter-spacing:-.5px;
-}
+.cta-title { font-family:'Lora',serif; font-size:clamp(32px,5vw,56px); font-weight:600; color:white; line-height:1.1; margin-bottom:16px; letter-spacing:-.5px; }
 .cta-title em { font-style:italic; color:var(--teal-lt); }
-
 .cta-sub { font-size:16px; color:rgba(255,255,255,.65); margin-bottom:36px; line-height:1.7; }
-
 .cta-actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-
-.btn-cta-primary {
-  padding:16px 32px; background:white; color:var(--blue);
-  border:none; border-radius:10px;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  font-size:15px; font-weight:700;
-  cursor:pointer; transition:all .2s; text-decoration:none;
-  display:inline-block;
-}
+.btn-cta-primary { padding:16px 32px; background:white; color:var(--blue); border:none; border-radius:10px; font-family:'Plus Jakarta Sans',sans-serif; font-size:15px; font-weight:700; cursor:pointer; transition:all .2s; text-decoration:none; display:inline-block; }
 .btn-cta-primary:hover { background:var(--snow); transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.2); }
-
-.btn-cta-ghost {
-  padding:15px 28px; background:transparent; color:rgba(255,255,255,.8);
-  border:1.5px solid rgba(255,255,255,.25);
-  border-radius:10px;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  font-size:15px; font-weight:600;
-  cursor:pointer; transition:all .2s; text-decoration:none;
-  display:inline-block;
-}
+.btn-cta-ghost { padding:15px 28px; background:transparent; color:rgba(255,255,255,.8); border:1.5px solid rgba(255,255,255,.25); border-radius:10px; font-family:'Plus Jakarta Sans',sans-serif; font-size:15px; font-weight:600; cursor:pointer; transition:all .2s; text-decoration:none; display:inline-block; }
 .btn-cta-ghost:hover { border-color:rgba(255,255,255,.6); color:white; }
-
 .cta-note { font-size:12px; color:rgba(255,255,255,.35); margin-top:20px; }
 
 /* ── FOOTER ── */
-footer {
-  background:var(--snow); border-top:1px solid var(--border);
-  padding:32px 24px;
-}
-.footer-inner {
-  max-width:1060px; margin:0 auto;
-  display:flex; align-items:center; justify-content:space-between;
-  flex-wrap:wrap; gap:16px;
-}
+footer { background:var(--snow); border-top:1px solid var(--border); padding:32px 24px; }
+.footer-inner { max-width:1060px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
 .footer-links { display:flex; gap:20px; flex-wrap:wrap; }
 .footer-link { font-size:12px; color:var(--text-dim); text-decoration:none; transition:color .2s; }
 .footer-link:hover { color:var(--blue); }
@@ -637,6 +543,16 @@ footer {
 .mock-day-card.sel{background:var(--teal);color:white;border-color:var(--teal);}
 .mock-day-card.tod{border:1.5px solid var(--blue);color:var(--blue);background:var(--blue-pale);}
 .mock-day-card.dim{color:var(--text-xdim);background:var(--snow);}
+
+/* ── DEMO BADGE ── */
+.demo-badge {
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(13,148,136,.1); border:1px solid rgba(13,148,136,.25);
+  border-radius:20px; padding:4px 12px;
+  font-size:9px; font-weight:700; letter-spacing:1.5px;
+  text-transform:uppercase; color:var(--teal);
+  margin-bottom:8px;
+}
 </style>
 </head>
 <body>
@@ -701,7 +617,7 @@ footer {
   </div>
 </div>
 
-<!-- ── MOCKUP ── -->
+<!-- ── MOCKUP (DEMO) ── -->
 <div class="mockup-section">
   <div style="position:relative;max-width:340px;width:100%">
     <div class="mockup-frame">
@@ -720,8 +636,9 @@ footer {
             <circle cx="26" cy="14" r="2.5" fill="#1a4f8a"/>
           </svg>
         </div>
-        <div class="mock-name">Dr. González Gómez</div>
-        <div class="mock-spec">Cirugía Dentomaxilar · Tucumán</div>
+        <div class="demo-badge">✦ Demo interactiva</div>
+        <div class="mock-name">Dr. Demo · Médico Clínico</div>
+        <div class="mock-spec">Consultorios Agendado · Tucumán</div>
       </div>
       <div class="mock-cal">
         <div class="mock-cal-head"><span>‹</span><span style="font-weight:700">Mayo 2026</span><span>›</span></div>
@@ -740,12 +657,12 @@ footer {
         </div>
       </div>
       <div class="mock-slots">
-        <div class="mock-slot tk">16:00</div>
-        <div class="mock-slot">16:30</div>
-        <div class="mock-slot sel">17:00</div>
-        <div class="mock-slot">17:30</div>
-        <div class="mock-slot tk">18:00</div>
-        <div class="mock-slot">18:30</div>
+        <div class="mock-slot tk">09:00</div>
+        <div class="mock-slot">09:30</div>
+        <div class="mock-slot sel">10:00</div>
+        <div class="mock-slot">10:30</div>
+        <div class="mock-slot tk">11:00</div>
+        <div class="mock-slot">11:30</div>
       </div>
       <button class="mock-btn">Confirmar turno →</button>
     </div>
@@ -756,7 +673,7 @@ footer {
         <span class="fb-icon">✅</span>
         <div>
           <div class="fb-text-label">Turno confirmado</div>
-          <div class="fb-text-val">Hoy · 17:00 hs</div>
+          <div class="fb-text-val">Hoy · 10:00 hs</div>
         </div>
       </div>
     </div>
@@ -974,6 +891,7 @@ footer {
       <div class="diff-item reveal"><div class="diff-icon">💬</div><div class="diff-text"><h3>Soporte real</h3><p>Hablás con una persona, no con un bot. Respuesta por WhatsApp en menos de 24 horas.</p></div></div>
       <div class="diff-item reveal"><div class="diff-icon">🇦🇷</div><div class="diff-text"><h3>Pensado para Argentina</h3><p>Precios en USD con equivalencia en ARS al día, soporte local. Entendemos al profesional argentino.</p></div></div>
       <div class="diff-item reveal"><div class="diff-icon">🔒</div><div class="diff-text"><h3>Sin permanencia</h3><p>Cancelás cuando querés. Confiamos en que el producto habla por sí solo.</p></div></div>
+      <div class="diff-item reveal"><div class="diff-icon">📅</div><div class="diff-text"><h3>Días especiales y colaboraciones</h3><p>¿Un colega trabaja con vos los jueves? Configuramos días especiales con profesionales invitados para que tus pacientes lo sepan antes de reservar.</p></div></div>
       <div class="diff-item reveal"><div class="diff-icon">📱</div><div class="diff-text"><h3>Funciona como app nativa</h3><p>Tus pacientes lo sienten como una app. Se puede instalar en el celular directo desde el navegador, sin App Store.</p></div></div>
     </div>
   </div>
@@ -1037,7 +955,7 @@ footer {
 
     <div class="cta-actions">
       <a class="btn-cta-primary" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Agendado" target="_blank">💬 Hablar por WhatsApp</a>
-      <a class="btn-cta-ghost" href="https://agendado-bruno.vercel.app" target="_blank">Ver demo en vivo →</a>
+      <a class="btn-cta-ghost" href="https://agendado-demo.vercel.app" target="_blank">Ver demo en vivo →</a>
     </div>
     <p class="cta-note">¿Tenés dudas? Respondemos en menos de 24 horas.</p>
     <div style="margin-top:24px;display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 20px;">
@@ -1067,20 +985,18 @@ footer {
       <a class="footer-link" href="#como">Cómo funciona</a>
       <a class="footer-link" href="#planes">Planes</a>
       <a class="footer-link" href="#para-quien">Para quién</a>
-      <a class="footer-link" href="https://agendado-bruno.vercel.app" target="_blank">Ver demo</a>
+      <a class="footer-link" href="https://agendado-demo.vercel.app" target="_blank">Ver demo</a>
     </div>
     <div class="footer-copy">© 2026 Agendado · Tucumán, Argentina · Todos los derechos reservados</div>
   </div>
 </footer>
 
 <script>
-// Scroll reveal
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Nav scroll effect
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
 });
